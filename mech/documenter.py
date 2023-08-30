@@ -1,18 +1,20 @@
 import os
 import cadquery as cq
 # from cq_annotate import add_circular_dimensions
-from components.auv_body import document as body_document
+from components.auv_hull import document as hull_document
+from components.auv_forward_bulkhead import document as forward_bulkhead_document
 
 svg_line_color = (10, 10, 10)
 svg_hidden_color = (127, 127, 127)
 
-def export_drawings(docs_images_path):
+def export_drawings(params):
     """
     Handles creating dimensioned SVG drawings of components.
     """
 
     # The body
-    bd = body_document(docs_images_path)
+    bd = hull_document(params)
+    fbh = forward_bulkhead_document(params)
     # bd = add_circular_dimensions(bd, arrow_scale_factor=0.25)
 
 
@@ -29,7 +31,9 @@ def document(base_dir, functions):
     if not exists:
         os.makedirs(docs_output_path)
 
+    import parameters as params
+
     # Export any dimensioned manufacturing drawings that are desired
-    export_drawings(docs_images_path)
+    export_drawings(params)
 
     print("Documenting...")

@@ -1,9 +1,8 @@
 #!/usr/bin/env hy
 
 (import cadquery :as cq)
-(import cadquery.vis [show])
 (import parameters :as params)
-(import components.auv_body [body])
+(import components.auv_hull [hull])
 (import components.auv_forward_bulkhead [bulkhead])
 (import components.helpers [append_sys_path handle_args])
 (import documenter [document])
@@ -13,16 +12,16 @@
     "Puts all the components of the assembly together in a CadQuery Assembly object"
 
     ; Define assembly colors to tell the components apart
-    (setv body_color (cq.Color 0.75 0.75 0.75 1.0))
+    (setv hull_color (cq.Color 0.75 0.75 0.75 1.0))
     (setv bulkhead_color (cq.Color 0.04, 0.5, 0.67, 1.0))
 
     ; Components of the assembly
     (setv auv_assy (cq.Assembly))
-    (setv body_model (body params))
+    (setv hull_model (hull params))
 
     ; Add the body as the fixed, central component
     (setv auv_assy
-        (auv_assy.add body_model :color body_color))
+        (auv_assy.add hull_model :color hull_color))
 
     ; Add the forward bulkhead
     (setv auv_assy
@@ -35,6 +34,8 @@
 
 (defn main [args]
     "Main entry point to the app for command line users"
+
+    (import cadquery.vis [show])
 
     (if (= args.document True)
         (do

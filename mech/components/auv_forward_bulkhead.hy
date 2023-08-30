@@ -1,5 +1,6 @@
 ; All units are in mm unless otherwise stated
 
+(import hy)
 (import cadquery :as cq)
 
 (defn bulkhead [params]
@@ -78,7 +79,7 @@
 
     ; Export the end view of the body tube in SVG
     ; # bh = add_circular_dimensions(bh, arrow_scale_factor=0.25)
-    (setv final_path (os.path.join docs_images_path "forward_bulkhead_right_side_view.svg"))
+    (setv final_path ((. os path join) docs_images_path "forward_bulkhead_right_side_view.svg"))
     (cq.exporters.export
         bh
         final_path
@@ -86,7 +87,7 @@
     )
 
     ; Export the end view of the body tube in DXF
-    (setv final_path (os.path.join manufacturing_files_path "forward_bulkhead_right_side_view.dxf"))
+    (setv final_path ((. os path join) manufacturing_files_path "forward_bulkhead_right_side_view.dxf"))
     (cq.exporters.export
         bh
         final_path
