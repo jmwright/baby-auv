@@ -30,7 +30,13 @@
 (defn document [params]
     "Allows this model to be documented by itself or part of a larger system"
 
+    ; Make sure that the helpers module can be found no matter how this is run
     (import os)
+    (import sys)
+    (import path)
+    (setv directory (.abspath (path.Path __file__)))
+    (sys.path.append directory.parent)
+  
     (import helpers [get_docs_images_path get_manufacturing_files_path])
 
     (setv svg_line_color #(10 10 10))
