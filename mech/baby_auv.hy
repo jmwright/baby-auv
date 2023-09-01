@@ -3,7 +3,7 @@
 (import cadquery :as cq)
 (import parameters :as params)
 (import components.auv_hull [hull])
-(import components.auv_forward_bulkhead [bulkhead])
+(import components.auv_rear_clamp [clamp :as rear_clamp])
 (import components.helpers [append_sys_path handle_args])
 (import documenter [document])
 
@@ -13,7 +13,7 @@
 
     ; Define assembly colors to tell the components apart
     (setv hull_color (cq.Color 0.75 0.75 0.75 1.0))
-    (setv bulkhead_color (cq.Color 0.04, 0.5, 0.67, 1.0))
+    (setv rear_clamp_color (cq.Color 0.04, 0.5, 0.67, 1.0))
 
     ; Components of the assembly
     (setv auv_assy (cq.Assembly))
@@ -23,9 +23,9 @@
     (setv auv_assy
         (auv_assy.add hull_model :color hull_color))
 
-    ; Add the forward bulkhead
+    ; Add the rear clamp
     (setv auv_assy
-        (auv_assy.add (bulkhead params) :color bulkhead_color :loc (cq.Location #(3.0 0.0 0.0) #(0, 0, 1) 180))
+        (auv_assy.add (rear_clamp params) :color rear_clamp_color :loc (cq.Location #(3.0 0.0 0.0) #(0, 0, 1) 180))
     )
 
     (return auv_assy)

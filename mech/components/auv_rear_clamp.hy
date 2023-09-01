@@ -3,14 +3,14 @@
 (import hy)
 (import cadquery :as cq)
 
-(defn bulkhead [params]
-    "Generates the forward bulkhead of the AUV"
+(defn clamp [params]
+    "Generates the rear clamp of the AUV"
 
     ; Dimensions of the first step
     (setv step_1_or (/ 82.5 2.0))
     (setv step_1_ir (/ 72.5 2.0))
 
-    ; First step of the bulkhead that slips inside the body tube
+    ; First step of the rear clamp that slips inside the body tube
     (setv bh
         (.extrude (.circle (.circle (cq.Workplane "YZ") step_1_or) step_1_ir) 3.0)
     )
@@ -19,7 +19,7 @@
     (setv step_2_or (/ 88.0 2.0))
     (setv step_2_ir (/ 59.5 2.0))
 
-    ; Second step of the bulkhead
+    ; Second step of the rear clamp
     (setv bh
         (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_2_or) step_2_ir) 2.0)
     )
@@ -28,7 +28,7 @@
     (setv step_3_or (/ 84.0 2.0))
     (setv step_3_ir (/ 59.5 2.0))
 
-    ; Third step of the bulkhead
+    ; Third step of the rear clamp
     (setv bh
         (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_3_or) step_3_ir) 1.0)
     )
@@ -37,7 +37,7 @@
     (setv step_4_or (/ 84.0 2.0))
     (setv step_4_ir (/ 76.0 2.0))
 
-    ; Forth step of the bulkhead
+    ; Forth step of the rear clamp
     (setv bh
         (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_4_or) step_4_ir) 6.0)
     )
@@ -81,21 +81,21 @@
     (setv manufacturing_files_path (get_manufacturing_files_path __file__))
 
     ; Generate the model so it can be exported
-    (setv bh (bulkhead params))
+    (setv cl (clamp params))
 
     ; Export the end view of the body tube in SVG
-    ; # bh = add_circular_dimensions(bh, arrow_scale_factor=0.25)
-    (setv final_path ((. os path join) docs_images_path "forward_bulkhead_right_side_view.svg"))
+    ; # cl = add_circular_dimensions(cl, arrow_scale_factor=0.25)
+    (setv final_path ((. os path join) docs_images_path "rear_clamp_right_side_view.svg"))
     (cq.exporters.export
-        bh
+        cl
         final_path
         :opt opts
     )
 
     ; Export the end view of the body tube in DXF
-    (setv final_path ((. os path join) manufacturing_files_path "forward_bulkhead_right_side_view.dxf"))
+    (setv final_path ((. os path join) manufacturing_files_path "rear_clamp_right_side_view.dxf"))
     (cq.exporters.export
-        bh
+        cl
         final_path
     )
 )
@@ -112,8 +112,8 @@
             (import cadquery.vis [show])
 
             ; Generate the model and display it
-            (setv bh (bulkhead params))
-            (show bh)
+            (setv cl (clamp params))
+            (show cl)
         )
     )
 )
