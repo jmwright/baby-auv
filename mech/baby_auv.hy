@@ -25,7 +25,7 @@
 
     ; Add the rear clamp
     (setv auv_assy
-        (auv_assy.add (rear_clamp params) :color rear_clamp_color :loc (cq.Location #(3.0 0.0 0.0) #(0, 0, 1) 180))
+        (auv_assy.add (.rotateAboutCenter (rear_clamp params) #(1, 0, 0) 30) :color rear_clamp_color :loc (cq.Location #(3.0 0.0 0.0) #(0, 0, 1) 180))
     )
 
     (return auv_assy)

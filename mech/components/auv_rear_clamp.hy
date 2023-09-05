@@ -10,39 +10,48 @@
     (setv step_1_or (/ 82.5 2.0))
     (setv step_1_ir (/ 72.5 2.0))
 
-    ; First step of the rear clamp that slips inside the body tube
-    (setv bh
-        (.extrude (.circle (.circle (cq.Workplane "YZ") step_1_or) step_1_ir) 3.0)
-    )
-
     ; Dimensions of the second step
     (setv step_2_or (/ 88.0 2.0))
     (setv step_2_ir (/ 59.5 2.0))
-
-    ; Second step of the rear clamp
-    (setv bh
-        (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_2_or) step_2_ir) 2.0)
-    )
 
     ; Dimensions of the third step
     (setv step_3_or (/ 84.0 2.0))
     (setv step_3_ir (/ 59.5 2.0))
 
-    ; Third step of the rear clamp
-    (setv bh
-        (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_3_or) step_3_ir) 1.0)
-    )
-
     ; Dimensions of the forth step
     (setv step_4_or (/ 84.0 2.0))
     (setv step_4_ir (/ 76.0 2.0))
 
-    ; Forth step of the rear clamp
-    (setv bh
-        (.extrude (.circle (.circle (.workplane (bh.faces ">X")) step_4_or) step_4_ir) 6.0)
+    ; Polar hole array parameters
+    (setv pcd_rad (/ 66.0 2.0))
+    (setv hole_dia 4.0)
+
+    ; First step of the rear clamp that slips inside the body tube
+    (setv rc
+        (.extrude (.circle (.circle (cq.Workplane "YZ") step_1_or) step_1_ir) 3.0)
     )
 
-    (return bh)
+    ; Second step of the rear clamp
+    (setv rc
+        (.extrude (.circle (.circle (.workplane (rc.faces ">X")) step_2_or) step_2_ir) 2.0)
+    )
+
+    ; Third step of the rear clamp
+    (setv rc
+        (.extrude (.circle (.circle (.workplane (rc.faces ">X")) step_3_or) step_3_ir) 1.0)
+    )
+
+    ; Forth step of the rear clamp
+    (setv rc
+        (.extrude (.circle (.circle (.workplane (rc.faces ">X")) step_4_or) step_4_ir) 6.0)
+    )
+
+    ; Add the polar hole pattern
+    (setv rc
+        (.hole (.polarArray (.workplane (rc.faces ">X")) pcd_rad 60 360 6) hole_dia)
+    )
+
+    (return rc)
 )
 
 
