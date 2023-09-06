@@ -22,10 +22,6 @@
     (setv step_4_or (/ 84.0 2.0))
     (setv step_4_ir (/ 76.0 2.0))
 
-    ; Polar hole array parameters
-    (setv pcd_rad (/ 66.0 2.0))
-    (setv hole_dia 4.0)
-
     ; First step of the rear clamp that slips inside the body tube
     (setv rc
         (.extrude (.circle (.circle (cq.Workplane "YZ") step_1_or) step_1_ir) 3.0)
@@ -48,7 +44,7 @@
 
     ; Add the polar hole pattern
     (setv rc
-        (.hole (.polarArray (.workplane (rc.faces ">X")) pcd_rad 60 360 6) hole_dia)
+        (.hole (.polarArray (.workplane (rc.faces ">X")) params.pcd_rad 60 360 6) params.hole_dia)
     )
 
     (return rc)

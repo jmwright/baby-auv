@@ -7,6 +7,7 @@
 (setv major_dia 82.5)
 (setv minor_dia 72.0)
 (setv step_heights 6.0)
+(setv pcb_hole_dia 2.5) ; Circuit board mounting hole diameter
 
 (defn bulkhead [params]
     "Generates the forward bulkhead of the AUV"
@@ -14,6 +15,25 @@
     ; First step of the shape
     (setv major_rad (/ major_dia 2.0))
     (setv bh (.extrude (.circle (cq.Workplane "YZ") major_rad) step_heights))
+
+    ; Second step of the shape
+    (setv minor_rad (/ minor_dia 2.0))
+    (setv bh (.extrude (.circle (.workplane (bh.faces ">X")) minor_rad) step_heights))
+
+    ; Add the polar hole pattern
+    (setv bh
+        (.hole (.polarArray (.workplane (bh.faces ">X")) params.pcd_rad 30 360 6) params.hole_dia 8.0)
+    )
+
+    ; Add the antenna hole
+    (setv bh
+        (.hole (.center (.workplane (bh.faces ">X")) -26.0, 0.0) 4.0)
+    )
+
+    ; Add circuit board mounting holes
+    (setv bh
+        (.hole (.rarray (.workplane (bh.faces "<X") :centerOption "CenterOfBoundBox") (* 18.5 2.0) (* 20.9 2.0) 2 2) pcb_hole_dia 3.0)
+    )
 
     (return bh)
 )
