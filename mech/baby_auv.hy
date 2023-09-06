@@ -5,6 +5,7 @@
 (import components.auv_hull [hull])
 (import components.auv_rear_clamp [clamp :as rear_clamp])
 (import components.auv_forward_bulkhead [bulkhead :as forward_bulkhead])
+(import components.auv_antenna_extension [extension_tube])
 (import components.helpers [append_sys_path handle_args])
 (import documenter [document])
 
@@ -33,6 +34,11 @@
     ; Add the forward bulkhead
     (setv auv_assy
         (auv_assy.add (forward_bulkhead params) :color forward_bulkhead_color :loc (cq.Location #(12.0 0.0 0.0) #(0, 0, 1) 180))
+    )
+
+    ; Add the antenna extension tube
+    (setv auv_assy
+        (auv_assy.add (extension_tube params) :color forward_bulkhead_color :loc (cq.Location #(-2.0 26.0 0.0) #(0, 0, 1) 180))
     )
 
     (return auv_assy)
