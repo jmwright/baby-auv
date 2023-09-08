@@ -1,0 +1,117 @@
+# All units are in mm unless otherwise stated
+
+import cadquery as cq
+
+
+def clamp(params):
+    """Generates the rear clamp of the AUV"""
+
+    # Outer and inner radii of the first step
+    step_1_or = 82.5 / 2.0
+    step_1_ir = 72.5 / 2.0
+
+    # Outer and inner radii of the second step
+    step_2_or = 88.0 / 2.0
+    step_2_ir = 59.5 / 2.0
+
+    # Outer and inner radii of the third step
+    step_3_or = 84.0 / 2.0
+    step_3_ir = 59.5 / 2.0
+
+    # Outer and inner radii of the forth step
+    step_4_or = 84.0 / 2.0
+    step_4_ir = 76.0 / 2.0
+
+    # First step of the rear clamp that slips inside the body tube
+    rc = cq.Workplane("YZ").circle(step_1_or).circle(step_1_ir).extrude(3.0)
+
+    # Second step of the rear clamp
+    rc = rc.faces(">X").workplane().circle(step_2_or).circle(step_2_ir).extrude(2.0)
+
+    # Third step of the rear clamp
+    rc = rc.faces(">X").workplane().circle(step_3_or).circle(step_3_ir).extrude(1.0)
+
+    # Forth step of the rear clamp
+    rc = rc.faces(">X").workplane().circle(step_4_or).circle(step_4_ir).extrude(6.0)
+
+    # Add the polar hole pattern
+    rc = (
+        rc.faces(">X")
+        .workplane()
+        .polarArray(params.pcd_rad, 60, 360, 6)
+        .hole(params.hole_dia)
+    )
+
+    return rc
+
+
+def document(params):
+    """Allows this model to be documented by itself or part of a larger system"""
+
+    # Make sure that the helpers module can be found no matter how this is run
+    import os
+    import sys
+    import path
+
+    directory = path.Path(__file__).abspath()
+    sys.path.append(directory.parent)
+    from helpers import get_docs_images_path, get_manufacturing_files_path
+
+    # Standard line colors for SVG export
+    svg_line_color = (10, 10, 10)
+    svg_hidden_color = (127, 127, 127)
+
+    # Standard options for SVG export
+    opts = {
+        "width": 800,
+        "height": None,
+        "marginLeft": 10,
+        "marginTop": 10,
+        "showAxes": False,
+        "projectionDir": (1.0, 0.0, 0.0),
+        "strokeWidth": 0.5,
+        "strokeColor": svg_line_color,
+        "hiddenColor": svg_hidden_color,
+        "showHidden": False,
+    }
+
+    # Get the path to the documentation images and manufacturing output files
+    docs_images_path = get_docs_images_path(__file__)
+    manufacturing_files_path = get_manufacturing_files_path(__file__)
+
+    # Generate the clamp so it can be exported
+    cl = clamp(params)
+
+    # Export the end view of the body tube in SVG
+    # cl = add_circular_dimensions(cl, arrow_scale_factor=0.25)
+    final_path = os.path.join(docs_images_path, "rear_clamp_right_side_view.svg")
+    cq.exporters.export(cl, final_path, opt=opts)
+
+    # Export the end view of the body tube in DXF
+    final_path = os.path.join(
+        manufacturing_files_path, "rear_clamp_right_side_view.dxf"
+    )
+    cq.exporters.export(cl, final_path)
+
+
+def main(args):
+    from helpers import append_sys_path
+
+    append_sys_path(".")
+    import parameters as params
+
+    # Generate documentation images and drawings
+    if args.document == True:
+        document(params)
+    # Generate and display the model
+    else:
+        from cadquery.vis import show
+
+        cl = clamp(params)
+        show(cl)
+
+
+if __name__ == "__main__":
+    from helpers import handle_args
+
+    main(handle_args())
