@@ -4,6 +4,9 @@ import cadquery as cq
 from baby_auv import document as assy_document
 from components.auv_hull import document as hull_document
 from components.auv_rear_clamp import document as rear_clamp_document
+from components.auv_antenna_extension import document as ant_extension_document
+from components.auv_front_clamp import document as front_clamp_document
+from components.auv_forward_bulkhead import document as bulkhead_document
 
 svg_line_color = (10, 10, 10)
 svg_hidden_color = (127, 127, 127)
@@ -16,10 +19,12 @@ def export_drawings(params, docs_images_path, docs_output_path):
     # Entire assembly
     assy_document(docs_images_path, docs_output_path)
 
-    # The body
-    bd = hull_document(params)
-    fbh = rear_clamp_document(params)
-    # bd = add_circular_dimensions(bd, arrow_scale_factor=0.25)
+    # Individual components of the assembly
+    hull_document(params)
+    rear_clamp_document(params)
+    ant_extension_document(params)
+    front_clamp_document(params)
+    bulkhead_document(params)
 
 
 def document(base_dir):

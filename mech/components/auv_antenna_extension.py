@@ -37,6 +37,29 @@ def document(params):
     svg_line_color = (10, 10, 10)
     svg_hidden_color = (127, 127, 127)
 
+    # Standard options for SVG export
+    opts = {
+        "width": 800,
+        "height": None,
+        "marginLeft": 10,
+        "marginTop": 10,
+        "showAxes": False,
+        "projectionDir": (1.0, 0.0, 0.0),
+        "strokeWidth": 0.5,
+        "strokeColor": svg_line_color,
+        "hiddenColor": svg_hidden_color,
+        "showHidden": False,
+    }
+
+    # Get the path to the documentation images and manufacturing output files
+    docs_images_path = get_docs_images_path(__file__)
+    manufacturing_files_path = get_manufacturing_files_path(__file__)
+
+    # Generate the extension tube and export drawings for it
+    et = extension_tube(params)
+    final_path = os.path.join(docs_images_path, "antenna_extension_tube_right_side_view.svg")
+    cq.exporters.export(et, final_path, opt=opts)
+
 
 def main(args):
     from helpers import append_sys_path
