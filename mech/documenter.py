@@ -1,16 +1,20 @@
 import os
 import cadquery as cq
 # from cq_annotate import add_circular_dimensions
+from baby_auv import document as assy_document
 from components.auv_hull import document as hull_document
 from components.auv_rear_clamp import document as rear_clamp_document
 
 svg_line_color = (10, 10, 10)
 svg_hidden_color = (127, 127, 127)
 
-def export_drawings(params):
+def export_drawings(params, docs_images_path, docs_output_path):
     """
     Handles creating dimensioned SVG drawings of components.
     """
+
+    # Entire assembly
+    assy_document(docs_images_path, docs_output_path)
 
     # The body
     bd = hull_document(params)
@@ -18,7 +22,7 @@ def export_drawings(params):
     # bd = add_circular_dimensions(bd, arrow_scale_factor=0.25)
 
 
-def document(base_dir, functions):
+def document(base_dir):
     # Create the docs/images directory if it does not exist
     docs_images_path = os.path.join(base_dir, "docs", "images")
     exists = os.path.exists(docs_images_path)
@@ -34,6 +38,6 @@ def document(base_dir, functions):
     import parameters as params
 
     # Export any dimensioned manufacturing drawings that are desired
-    export_drawings(params)
+    export_drawings(params, docs_images_path, docs_output_path)
 
     print("Documenting...")
