@@ -1,5 +1,6 @@
 import os
 import cadquery as cq
+
 # from cq_annotate import add_circular_dimensions
 from baby_auv import document as assy_document
 from components.auv_hull import document as hull_document
@@ -10,6 +11,7 @@ from components.auv_forward_bulkhead import document as bulkhead_document
 
 svg_line_color = (10, 10, 10)
 svg_hidden_color = (127, 127, 127)
+
 
 def export_drawings(params, docs_images_path, docs_output_path):
     """

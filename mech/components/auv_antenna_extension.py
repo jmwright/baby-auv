@@ -57,7 +57,9 @@ def document(params):
 
     # Generate the extension tube and export drawings for it
     et = extension_tube(params)
-    final_path = os.path.join(docs_images_path, "antenna_extension_tube_right_side_view.svg")
+    final_path = os.path.join(
+        docs_images_path, "antenna_extension_tube_right_side_view.svg"
+    )
     cq.exporters.export(et, final_path, opt=opts)
 
 

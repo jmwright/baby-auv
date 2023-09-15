@@ -27,15 +27,7 @@ def clamp(params):
     )
 
     # Add the circular notches
-    cl = (
-        cl.faces(">X")
-        .workplane()
-        .pushPoints([(0.0, 27.0), (0.0, -27.0)])
-        .hole(10.0)
-    )
-
-    # 27.0 mm
-    # 10.0 mm dia
+    cl = cl.faces(">X").workplane().pushPoints([(0.0, 27.0), (0.0, -27.0)]).hole(10.0)
 
     return cl
 

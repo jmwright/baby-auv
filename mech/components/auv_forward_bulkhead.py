@@ -58,7 +58,7 @@ def document(params):
     svg_line_color = (10, 10, 10)
     svg_hidden_color = (127, 127, 127)
 
-     # Standard options for SVG export
+    # Standard options for SVG export
     opts = {
         "width": 800,
         "height": None,
