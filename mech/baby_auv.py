@@ -8,6 +8,7 @@ from components.auv_rear_bulkhead import bulkhead as rear_bulkhead
 from components.auv_antenna_extension import extension_tube
 from components.auv_cage import cage
 from components.helpers import append_sys_path, handle_args
+from cq_annotate import explode_assembly
 
 
 def build_auv_assembly():
@@ -23,48 +24,54 @@ def build_auv_assembly():
     auv_assy = cq.Assembly()
 
     # Add the body as the fixed, central component
-    auv_assy = auv_assy.add(hull(params), color=hull_color)
+    auv_assy.add(hull(params), color=hull_color)
 
     # Add the forward bulkhead
-    auv_assy = auv_assy.add(
+    auv_assy.add(
         forward_bulkhead(params),
         color=bulkhead_color,
         loc=cq.Location((12.0, 0.0, 0.0), (0, 0, 1), 180),
+        metadata={"explode_loc": cq.Location((60, 0, 0))},
     )
 
     # Add the front clamp
-    auv_ass = auv_assy.add(
+    auv_assy.add(
         front_clamp(params),
         color=clamp_color,
         loc=cq.Location((-4.0, 0.0, 0.0), (1, 0, 0), 90),
+        metadata={"explode_loc": cq.Location((-84, 0, 0))},
     )
 
     # Add the antenna extension tube
-    auv_assy = auv_assy.add(
+    auv_assy.add(
         extension_tube(params),
         color=bulkhead_color,
         loc=cq.Location((0.0, 26.0, 0.0), (0, 0, 1), 180),
+        metadata={"explode_loc": cq.Location((100, 0, 0))},
     )
 
     # Add the rear bulkhead
-    auv_assy = auv_assy.add(
+    auv_assy.add(
         rear_bulkhead(params),
         color=bulkhead_color,
         loc=cq.Location((params.hull_length - 12.0, 0.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((60, 0, 0))},
     )
 
     # Add the rear clamp
-    auv_assy = auv_assy.add(
+    auv_assy.add(
         rear_clamp(params).rotateAboutCenter((1, 0, 0), 30),
         color=clamp_color,
         loc=cq.Location((params.hull_length - 3.0, 0.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((80, 0, 0))},
     )
 
     # Add the cage
-    auv_assy = auv_assy.add(
+    auv_assy.add(
         cage(params),
         color=cage_color,
         loc=cq.Location((params.hull_length + 2.0, 0.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((100, 0, 0))},
     )
 
     return auv_assy
@@ -99,6 +106,7 @@ def main(args):
         from cadquery.vis import show
 
         assy = build_auv_assembly()
+        explode_assembly(assy)
         show(assy)
 
 
