@@ -22,9 +22,79 @@ def bulkhead(params):
     # Add the polar hole pattern
     bh = (
         bh.faces(">X")
-        .workplane()
+        .workplane(centerOption="CenterOfBoundBox")
         .polarArray(params.pcd_rad, 30, 360, 6)
         .hole(params.hole_dia, 8.0)
+    )
+
+    # Thruster gland hole
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(23.0, 0.0)
+        .hole(3.0)
+    )
+
+    # Thruster gland O-ring pocket
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(23.0, 0.0)
+        .hole(8.0, depth=0.8)
+    )
+
+    # Thruster gland mount holes
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(23.0, 0.0)
+        .polarArray(radius=7.0, startAngle=0.0, angle=360.0, count=3)
+        .hole(2.5, depth=4.0)
+    )
+
+    # Motor mount holes
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .pushPoints([(38.0, 0.0), (23.0, 18.0), (23.0, -18.0)])
+        .hole(2.5, depth=4.0)
+    )
+
+    # Conductivity sensor pocket and hole
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(-12.0, 20.8)
+        .hole(18.0, depth=1.8)
+        .faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(-12.0, 20.8)
+        .hole(12.8)
+    )
+
+    # Conductivity sensor mounting holes
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(-12.0, 20.8)
+        .polarArray(radius=13.0, startAngle=30.0, angle=360.0, count=3)
+        .hole(3.3, depth=4.0)
+    )
+
+    # Depth tube hole
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .center(-9.6, -24.4)
+        .hole(4.9)
+    )
+
+    # Other mounting holes
+    bh = (
+        bh.faces("<X")
+        .workplane(centerOption="CenterOfBoundBox")
+        .pushPoints([(-19.0, -5.0), (-28.0, -5.0), (-25.9, -20.8), (-5.1, -32.8)])
+        .hole(2.5, depth=4.0)
     )
 
     return bh
