@@ -42,6 +42,25 @@ def clamp(params):
         .hole(params.hole_dia)
     )
 
+    # Add the cage mounting hole pattern
+    mounting_hole_or = params.m3_tap_drill_size / 2.0
+    rc = (
+        rc.workplane(
+            centerOption="CenterOfBoundBox", offset=3.0 - mounting_hole_or / 2.0
+        )
+        .transformed(rotate=cq.Vector(90, 30, 0))
+        .circle(mounting_hole_or)
+        .cutThruAll()
+    )
+    rc = (
+        rc.transformed(rotate=cq.Vector(0, 60, 0)).circle(mounting_hole_or).cutThruAll()
+    )
+    rc = (
+        rc.transformed(rotate=cq.Vector(0, -120, 0))
+        .circle(mounting_hole_or)
+        .cutThruAll()
+    )
+
     return rc
 
 

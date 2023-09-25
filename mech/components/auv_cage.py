@@ -58,7 +58,16 @@ def cage(params):
     # Add the second pair of mounting holes
     cg = (
         cg.workplane(centerOption="CenterOfBoundBox")
-        .transformed(rotate=cq.Vector(120, 0, 0))
+        .transformed(rotate=cq.Vector(60, 0, 0))
+        .center(cage_length / 2.0 - 3.0, 0.0)
+        .circle(mounting_hole_or)
+        .cutThruAll()
+    )
+
+    # Add the third pair of mounting holes
+    cg = (
+        cg.workplane(centerOption="CenterOfBoundBox")
+        .transformed(rotate=cq.Vector(-120, 0, 0))
         .center(cage_length / 2.0 - 3.0, 0.0)
         .circle(mounting_hole_or)
         .cutThruAll()
