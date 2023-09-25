@@ -76,6 +76,54 @@ def cage(params):
     return cg
 
 
+def document(params):
+    """Allows this model to be documented by itself or part of a larger system"""
+
+    # Make sure that the helpers module can be found no matter how this is run
+    import os
+    import sys
+    import path
+
+    directory = path.Path(__file__).abspath()
+    sys.path.append(directory.parent)
+    from helpers import get_docs_images_path, get_manufacturing_files_path
+
+    # Standard line colors for SVG export
+    svg_line_color = (10, 10, 10)
+    svg_hidden_color = (127, 127, 127)
+
+    # Standard options for SVG export
+    opts = {
+        "width": 800,
+        "height": None,
+        "marginLeft": 10,
+        "marginTop": 10,
+        "showAxes": False,
+        "projectionDir": (1.0, 0.0, 0.0),
+        "strokeWidth": 0.5,
+        "strokeColor": svg_line_color,
+        "hiddenColor": svg_hidden_color,
+        "showHidden": False,
+    }
+
+    # Get the path to the documentation images and manufacturing output files
+    docs_images_path = get_docs_images_path(__file__)
+    manufacturing_files_path = get_manufacturing_files_path(__file__)
+
+    # Generate the cage so that it can be documented
+    cg = cage(params)
+
+    # Export the end view of the body tube in SVG
+    final_path = os.path.join(docs_images_path, "cage_right_side_view.svg")
+    cq.exporters.export(cg, final_path, opt=opts)
+
+    # Export the end view of the body tube in DXF
+    final_path = os.path.join(
+        manufacturing_files_path, "cage_right_side_view.dxf"
+    )
+    cq.exporters.export(cg, final_path)
+
+
 def main(args):
     from helpers import append_sys_path
 

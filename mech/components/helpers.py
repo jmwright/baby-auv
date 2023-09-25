@@ -44,7 +44,7 @@ def get_docs_images_path(base_path):
         base_path = directory.parent.parent
 
     # Create the docs/images directory if it does not exist
-    docs_images_path = os.path.join(base_path, "docs", "images")
+    docs_images_path = os.path.join(base_path, "docs", "images", "generated")
     if os.path.exists(docs_images_path) is not True:
         os.makedirs(docs_images_path)
 
@@ -61,7 +61,7 @@ def get_manufacturing_files_path(base_path):
         base_path = directory.parent.parent
 
     # Create the docs/output/stl directory if it does not exist
-    docs_output_path = os.path.join(base_path, "docs", "manufacturing_files")
+    docs_output_path = os.path.join(base_path, "docs", "manufacturing_files", "generated")
     if os.path.exists(docs_output_path) is not True:
         os.makedirs(docs_output_path)
 

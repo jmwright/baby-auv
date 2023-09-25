@@ -97,10 +97,15 @@ def main(args):
 
     # Generate documentation
     if args.document == True:
-        from documenter import document
+        # import components.parameters as params
+        # from components.helpers import get_docs_images_path, get_manufacturing_files_path
 
-        append_sys_path(".")
-        document(".")
+        # Get the path to the documentation images and manufacturing output files
+        import os
+        docs_images_path = os.path.join(".", "docs", "images", "generated")  #get_docs_images_path("..")
+        manufacturing_files_path = os.path.join(".", "docs", "manufacturing_files", "generated") # get_manufacturing_files_path("..")
+
+        document(docs_images_path, manufacturing_files_path)
     # Display the assembly
     else:
         from cadquery.vis import show
