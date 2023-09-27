@@ -113,6 +113,7 @@ def main(args):
     # Generate documentation
     if args.document == True:
         import components.helpers as helpers
+
         docs_images_path = helpers.get_docs_images_path(3)
         manufacturing_files_path = helpers.get_manufacturing_files_path(3)
 

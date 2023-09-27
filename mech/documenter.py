@@ -18,6 +18,7 @@ def document():
     print("Documenting...")
 
     import components.helpers as helpers
+
     docs_images_path = helpers.get_docs_images_path(3)
     manufacturing_files_path = helpers.get_manufacturing_files_path(3)
 

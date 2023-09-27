@@ -102,7 +102,11 @@ def document(params, docs_images_path, manufacturing_files_path):
 
 
 def main(args):
-    from helpers import append_sys_path, get_docs_images_path, get_manufacturing_files_path
+    from helpers import (
+        append_sys_path,
+        get_docs_images_path,
+        get_manufacturing_files_path,
+    )
 
     append_sys_path(".")
     import parameters as params
