@@ -11,49 +11,33 @@ from components.auv_front_clamp import document as front_clamp_document
 from components.auv_forward_bulkhead import document as bulkhead_document
 from components.auv_cage import document as cage_document
 from components.auv_rear_bulkhead import document as rear_bulkhead_document
-
-svg_line_color = (10, 10, 10)
-svg_hidden_color = (127, 127, 127)
+from components.auv_depth_nipple import document as depth_nipple_document
 
 
-def export_drawings(params, docs_images_path, docs_output_path):
-    """
-    Handles creating dimensioned SVG drawings of components.
-    """
+def document():
+    print("Documenting...")
 
-    # Entire assembly
-    assy_document(docs_images_path, docs_output_path)
-
-    # Individual components of the assembly
-    hull_document(params)
-    rear_clamp_document(params)
-    ant_extension_document(params)
-    front_clamp_document(params)
-    bulkhead_document(params)
-    cage_document(params)
-    rear_bulkhead_document(params)
-
-
-def document(base_dir):
-    # Create the docs/images directory if it does not exist
-    docs_images_path = os.path.join(base_dir, "docs", "images", "generated")
-    exists = os.path.exists(docs_images_path)
-    if not exists:
-        os.makedirs(docs_images_path)
-
-    # Create the docs/output/stl directory if it does not exist
-    manufacturing_files_path = os.path.join(base_dir, "docs", "manufacturing_files", "generated")
-    exists = os.path.exists(manufacturing_files_path)
-    if not exists:
-        os.makedirs(manufacturing_files_path)
+    import components.helpers as helpers
+    docs_images_path = helpers.get_docs_images_path(3)
+    manufacturing_files_path = helpers.get_manufacturing_files_path(3)
 
     import parameters as params
 
-    # Export any dimensioned manufacturing drawings that are desired
-    export_drawings(params, docs_images_path, manufacturing_files_path)
+    # Export the entire assembly
+    assy_document(docs_images_path, manufacturing_files_path)
 
-    print("Documenting...")
+    # Export individual components of the assembly
+    hull_document(params, docs_images_path, manufacturing_files_path)
+    rear_clamp_document(params, docs_images_path, manufacturing_files_path)
+    ant_extension_document(params, docs_images_path, manufacturing_files_path)
+    front_clamp_document(params, docs_images_path, manufacturing_files_path)
+    bulkhead_document(params, docs_images_path, manufacturing_files_path)
+    cage_document(params, docs_images_path, manufacturing_files_path)
+    rear_bulkhead_document(params, docs_images_path, manufacturing_files_path)
+    depth_nipple_document(params, docs_images_path, manufacturing_files_path)
+
+    print("finished documenting.")
 
 
 if __name__ == "__main__":
-    document("..")
+    document()

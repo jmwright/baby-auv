@@ -64,17 +64,10 @@ def clamp(params):
     return rc
 
 
-def document(params):
+def document(params, docs_images_path, manufacturing_files_path):
     """Allows this model to be documented by itself or part of a larger system"""
 
-    # Make sure that the helpers module can be found no matter how this is run
     import os
-    import sys
-    import path
-
-    directory = path.Path(__file__).abspath()
-    sys.path.append(directory.parent)
-    from helpers import get_docs_images_path, get_manufacturing_files_path
 
     # Standard line colors for SVG export
     svg_line_color = (10, 10, 10)
@@ -94,15 +87,10 @@ def document(params):
         "showHidden": False,
     }
 
-    # Get the path to the documentation images and manufacturing output files
-    docs_images_path = get_docs_images_path(__file__)
-    manufacturing_files_path = get_manufacturing_files_path(__file__)
-
     # Generate the clamp so it can be exported
     cl = clamp(params)
 
     # Export the end view of the body tube in SVG
-    # cl = add_circular_dimensions(cl, arrow_scale_factor=0.25)
     final_path = os.path.join(docs_images_path, "rear_clamp_right_side_view.svg")
     cq.exporters.export(cl, final_path, opt=opts)
 
@@ -114,14 +102,18 @@ def document(params):
 
 
 def main(args):
-    from helpers import append_sys_path
+    from helpers import append_sys_path, get_docs_images_path, get_manufacturing_files_path
 
     append_sys_path(".")
     import parameters as params
 
     # Generate documentation images and drawings
     if args.document == True:
-        document(params)
+        # Get the paths for the documentation output files
+        docs_images_path = get_docs_images_path(3)
+        manufacturing_files_path = get_manufacturing_files_path(3)
+
+        document(params, docs_images_path, manufacturing_files_path)
     # Generate and display the model
     else:
         from cadquery.vis import show

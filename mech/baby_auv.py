@@ -7,6 +7,7 @@ from components.auv_forward_bulkhead import bulkhead as forward_bulkhead
 from components.auv_rear_bulkhead import bulkhead as rear_bulkhead
 from components.auv_antenna_extension import extension_tube
 from components.auv_cage import cage
+from components.auv_depth_nipple import nipple
 from components.helpers import append_sys_path, handle_args
 from cq_annotate import explode_assembly
 
@@ -19,6 +20,7 @@ def build_auv_assembly():
     clamp_color = cq.Color(0.408, 0.278, 0.553, 1.0)
     cage_color = cq.Color(0.04, 0.5, 0.67, 1.0)
     bulkhead_color = cq.Color(0.565, 0.698, 0.278, 1.0)
+    hardware_color = cq.Color(0.996, 0.867, 0.0, 1.0)
 
     # Components of the assembly
     auv_assy = cq.Assembly()
@@ -45,7 +47,7 @@ def build_auv_assembly():
     # Add the antenna extension tube
     auv_assy.add(
         extension_tube(params),
-        color=bulkhead_color,
+        color=hardware_color,
         loc=cq.Location((0.0, 26.0, 0.0), (0, 0, 1), 180),
         metadata={"explode_loc": cq.Location((100, 0, 0))},
     )
@@ -74,16 +76,29 @@ def build_auv_assembly():
         metadata={"explode_loc": cq.Location((100, 0, 0))},
     )
 
+    # Add the depth gauge nipple
+    auv_assy.add(
+        nipple(params),
+        color=hardware_color,
+        loc=cq.Location((params.hull_length - 22.0, 9.6, -24.4), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((100, 0, 0))},
+    )
+
     return auv_assy
 
 
-def document(docs_images_path, docs_output_path):
+def document(docs_images_path, manufacturing_files_path):
     """Documents the top level assembly and any sub-assemblies."""
     import os
 
     assy = build_auv_assembly()
 
+    # Save the stock assembly so it can be viewed online
     assy.save(os.path.join(docs_images_path, "baby_auv_assembly.gltf"))
+
+    # Save the exploded assembly so it can be viewed online
+    explode_assembly(assy)
+    assy.save(os.path.join(docs_images_path, "baby_auv_exploded_assembly.gltf"))
 
 
 # In case this is being run from CQ-editor
@@ -97,13 +112,9 @@ def main(args):
 
     # Generate documentation
     if args.document == True:
-        # import components.parameters as params
-        # from components.helpers import get_docs_images_path, get_manufacturing_files_path
-
-        # Get the path to the documentation images and manufacturing output files
-        import os
-        docs_images_path = os.path.join(".", "docs", "images", "generated")  #get_docs_images_path("..")
-        manufacturing_files_path = os.path.join(".", "docs", "manufacturing_files", "generated") # get_manufacturing_files_path("..")
+        import components.helpers as helpers
+        docs_images_path = helpers.get_docs_images_path(3)
+        manufacturing_files_path = helpers.get_manufacturing_files_path(3)
 
         document(docs_images_path, manufacturing_files_path)
     # Display the assembly

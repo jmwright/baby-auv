@@ -3,33 +3,35 @@
 import cadquery as cq
 
 # Parameters
-clamp_od = 88.0  # Outer diameter of the clamp
-clamp_id = 60.0  # Inner diameter of the clamp
-clamp_thickness = 4.0  # Thickness of the clamp
+straight_length = 25.0  # mm
+barb_half_length = 5.0  # mm
+tube_od = 4.0  # mm
+tube_id = 2.0  # mm
+barb_od = 4.9  # mm
+barb_length = 5.0  # mm
 
-# Derived parameters
-clamp_or = clamp_od / 2.0
-clamp_ir = clamp_id / 2.0
 
+def nipple(params):
+    """Generates the nipple for the depth sensor tube."""
 
-def clamp(params):
-    """Generates the front clamp of the AUV"""
+    # Main tube shape
+    np = cq.Workplane("YZ").circle(tube_od / 2.0).extrude(straight_length)
 
-    # Primary shape of the clamp
-    cl = cq.Workplane("YZ").circle(clamp_or).circle(clamp_ir).extrude(clamp_thickness)
-
-    # Add the polar hole pattern
-    cl = (
-        cl.faces(">X")
+    # Hose barb
+    np = (
+        np.faces(">X")
         .workplane()
-        .polarArray(params.pcd_rad, 60, 360, 6)
-        .hole(params.hole_dia)
+        .circle(barb_od / 2.0)
+        .extrude(barb_length, taper=-174.75)
     )
 
-    # Add the circular notches
-    cl = cl.faces(">X").workplane().pushPoints([(0.0, 27.0), (0.0, -27.0)]).hole(10.0)
+    # Post-barb tube
+    np = np.faces(">X").workplane().circle(tube_od / 2.0).extrude(2.0)
 
-    return cl
+    # Center hole
+    np = np.faces(">X").workplane().circle(tube_id / 2.0).cutThruAll()
+
+    return np
 
 
 def document(params, docs_images_path, manufacturing_files_path):
@@ -37,7 +39,7 @@ def document(params, docs_images_path, manufacturing_files_path):
 
     import os
 
-    # Establish standard colors for the SVG line colors
+    # Standard colors for SVG export
     svg_line_color = (10, 10, 10)
     svg_hidden_color = (127, 127, 127)
 
@@ -55,10 +57,14 @@ def document(params, docs_images_path, manufacturing_files_path):
         "showHidden": False,
     }
 
-    # Generate the extension tube and export drawings for it
-    fc = clamp(params)
-    final_path = os.path.join(docs_images_path, "front_clamp_right_side_view.svg")
-    cq.exporters.export(fc, final_path, opt=opts)
+    # Generate the depth nipple and export drawings for it
+    np = nipple(params)
+    final_path = os.path.join(docs_images_path, "depth_nipple_right_side_view.svg")
+    cq.exporters.export(np, final_path, opt=opts)
+
+    # Export an STL of the depth nipple in case that is the manufacturing method
+    final_path = os.path.join(manufacturing_files_path, "depth_nipple.stl")
+    cq.exporters.export(np, final_path)
 
 
 def main(args):
@@ -74,12 +80,12 @@ def main(args):
     # Generate documentation images and drawings
     if args.document == True:
         document(params, docs_images_path, manufacturing_files_path)
-    # Generate and display the model
+    # Generate the model and display it
     else:
         from cadquery.vis import show
 
-        cl = clamp(params)
-        show(cl)
+        np = nipple(params)
+        show(np)
 
 
 if __name__ == "__main__":

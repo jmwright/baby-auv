@@ -31,17 +31,23 @@ def handle_args():
     return args
 
 
-def get_docs_images_path(base_path):
+def get_docs_images_path(depth):
     """Gets the documentation images path for the user, creating the directory if needed"""
 
     # Handle wanting the parent directory
-    if "components" in base_path:
+    if depth == 3:
         # We need to go up an extra directory to get to the base
         directory = path.Path(__file__).abspath()
         base_path = directory.parent.parent.parent
-    else:
+    elif depth == 2:
         directory = path.Path(__file__).abspath()
         base_path = directory.parent.parent
+    elif depth == 1:
+        directory = path.Path(__file__).abspath()
+        base_path = directory.parent
+    else:
+        directory = path.Path(__file__).abspath()
+        base_path = directory
 
     # Create the docs/images directory if it does not exist
     docs_images_path = os.path.join(base_path, "docs", "images", "generated")
@@ -51,17 +57,26 @@ def get_docs_images_path(base_path):
     return docs_images_path
 
 
-def get_manufacturing_files_path(base_path):
+def get_manufacturing_files_path(depth):
     # Handle wanting the parent directory
-    if "components" in base_path:
+    if depth == 3:
+        # We need to go up an extra directory to get to the base
         directory = path.Path(__file__).abspath()
         base_path = directory.parent.parent.parent
-    else:
+    elif depth == 2:
         directory = path.Path(__file__).abspath()
         base_path = directory.parent.parent
+    elif depth == 1:
+        directory = path.Path(__file__).abspath()
+        base_path = directory.parent
+    else:
+        directory = path.Path(__file__).abspath()
+        base_path = directory
 
     # Create the docs/output/stl directory if it does not exist
-    docs_output_path = os.path.join(base_path, "docs", "manufacturing_files", "generated")
+    docs_output_path = os.path.join(
+        base_path, "docs", "manufacturing_files", "generated"
+    )
     if os.path.exists(docs_output_path) is not True:
         os.makedirs(docs_output_path)
 
