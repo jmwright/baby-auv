@@ -9,6 +9,7 @@ from components.auv_antenna_extension import extension_tube
 from components.auv_cage import cage
 from components.auv_depth_nipple import nipple
 from components.auv_006_oring import oring
+from components.auv_neoprene_gasket import gasket
 from components.helpers import append_sys_path, handle_args
 from cq_annotate import explode_assembly
 
@@ -17,7 +18,7 @@ def build_auv_assembly():
     """Puts all the components of the assembly together in a CadQuery Assembly object"""
 
     # Define assembly colors to tell the components apart
-    hull_color = cq.Color(0.75, 0.75, 0.75, 1.0)
+    hull_color = cq.Color(0.75, 0.75, 0.75, 0.25)
     clamp_color = cq.Color(0.408, 0.278, 0.553, 1.0)
     cage_color = cq.Color(0.04, 0.5, 0.67, 1.0)
     bulkhead_color = cq.Color(0.565, 0.698, 0.278, 1.0)
@@ -94,6 +95,22 @@ def build_auv_assembly():
         metadata={"explode_loc": cq.Location((40, 0, 0))},
     )
 
+    # Add the rear neoprene expansion gasket
+    auv_assy.add(
+        gasket(),
+        color=seal_color,
+        loc=cq.Location((params.hull_length - 6.0, 0.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((71, 0, 0))},
+    )
+
+    # Add the forward neoprene expansion gasket
+    auv_assy.add(
+        gasket(),
+        color=seal_color,
+        loc=cq.Location((0.0, 0.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((-75, 0, 0))},
+    )
+
     return auv_assy
 
 
@@ -133,7 +150,7 @@ def main(args):
         from cadquery.vis import show
 
         assy = build_auv_assembly()
-        explode_assembly(assy)
+        # explode_assembly(assy)
         show(assy)
 
 
