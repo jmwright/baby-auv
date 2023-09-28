@@ -10,7 +10,12 @@ cross_section = 1.78  # mm
 
 def oring():
     # Overall ring shape
-    ring = cq.Workplane("YZ").circle(id / 2.0 + cross_section).circle(id / 2.0).extrude(cross_section)
+    ring = (
+        cq.Workplane("YZ")
+        .circle(id / 2.0 + cross_section)
+        .circle(id / 2.0)
+        .extrude(cross_section)
+    )
 
     # Fillets to make it more o-ring shaped
     ring = ring.edges().fillet(cross_section / 2.0 - 0.001)
