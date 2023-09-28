@@ -8,6 +8,7 @@ from components.auv_rear_bulkhead import bulkhead as rear_bulkhead
 from components.auv_antenna_extension import extension_tube
 from components.auv_cage import cage
 from components.auv_depth_nipple import nipple
+from components.auv_006_oring import oring
 from components.helpers import append_sys_path, handle_args
 from cq_annotate import explode_assembly
 
@@ -21,6 +22,7 @@ def build_auv_assembly():
     cage_color = cq.Color(0.04, 0.5, 0.67, 1.0)
     bulkhead_color = cq.Color(0.565, 0.698, 0.278, 1.0)
     hardware_color = cq.Color(0.996, 0.867, 0.0, 1.0)
+    seal_color = cq.Color(0.122, 0.125, 0.133, 1.0)
 
     # Components of the assembly
     auv_assy = cq.Assembly()
@@ -82,6 +84,14 @@ def build_auv_assembly():
         color=hardware_color,
         loc=cq.Location((params.hull_length - 22.0, 9.6, -24.4), (0, 0, 1), 0),
         metadata={"explode_loc": cq.Location((100, 0, 0))},
+    )
+
+    # Add the o-ring for the conductivity sensor
+    auv_assy.add(
+        oring(),
+        color=seal_color,
+        loc=cq.Location((params.hull_length - 13.0, -23.0, 0.0), (0, 0, 1), 0),
+        metadata={"explode_loc": cq.Location((40, 0, 0))},
     )
 
     return auv_assy

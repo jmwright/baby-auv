@@ -28,19 +28,19 @@ def bulkhead(params):
     )
 
     # Thruster gland hole
-    bh = (
-        bh.faces("<X")
-        .workplane(centerOption="CenterOfBoundBox")
-        .center(23.0, 0.0)
-        .hole(3.0)
-    )
+    # bh = (
+    #     bh.faces("<X")
+    #     .workplane(centerOption="CenterOfBoundBox")
+    #     .center(23.0, 0.0)
+    #     .hole(3.0)
+    # )
 
     # Thruster gland O-ring pocket
     bh = (
         bh.faces("<X")
         .workplane(centerOption="CenterOfBoundBox")
         .center(23.0, 0.0)
-        .hole(8.0, depth=0.8)
+        .hole(8.0)  # , depth=0.8
     )
 
     # Thruster gland mount holes
