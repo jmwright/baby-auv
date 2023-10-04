@@ -16,7 +16,7 @@ exports:
       step_heights: 6.0
     source-files:
     - filepath: ./mech/components/auv_forward_bulkhead.py
-      md5: 7484ef76fb3f05226bba3c0d1d4ce28d
+      md5: 474f63e3f8adc053087ca576fba0a67b
   hull:
     application: cadquery
     description: 'Main hull of the AUV, made from aluminum tubing.
@@ -24,7 +24,8 @@ exports:
       '
     name: hull
     output-files:
-    - ./docs/manufacturing_files/generated/hull_right_side_view.dxf
+    - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
+      md5: 824ce595cc26270a8bb1d3a1d8d561cb
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
