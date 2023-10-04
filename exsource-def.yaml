@@ -1,0 +1,14 @@
+exports:
+  hull:
+    name: hull
+    description: >
+        Main hull of the AUV, made from aluminum tubing.
+    output-files:
+        - ./docs/manufacturing_files/generated/hull_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_hull.py
+    parameters:
+        hull_diameter: 88.9
+        hull_wall_thickness: 3.0
+        hull_length: 520.0
+    application: cadquery

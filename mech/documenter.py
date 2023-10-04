@@ -4,7 +4,6 @@ from components.helpers import get_docs_images_path, get_manufacturing_files_pat
 
 # from cq_annotate import add_circular_dimensions
 from baby_auv import document as assy_document
-from components.auv_hull import document as hull_document
 from components.auv_rear_clamp import document as rear_clamp_document
 from components.auv_antenna_extension import document as ant_extension_document
 from components.auv_front_clamp import document as front_clamp_document
@@ -28,7 +27,6 @@ def document():
     assy_document(docs_images_path, manufacturing_files_path)
 
     # Export individual components of the assembly
-    hull_document(params, docs_images_path, manufacturing_files_path)
     rear_clamp_document(params, docs_images_path, manufacturing_files_path)
     ant_extension_document(params, docs_images_path, manufacturing_files_path)
     front_clamp_document(params, docs_images_path, manufacturing_files_path)
