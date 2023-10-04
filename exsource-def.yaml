@@ -1,4 +1,13 @@
 exports:
+#   assembly:
+#     name: assembly
+#     description: >
+#         Entire AUV assembly
+#     output-files:
+#         - ./docs/images/generated/baby_auv_assembly.gltf
+#     source-files:
+#         - ./mech/baby_auv.py
+#     application: cadquery
   hull:
     name: hull
     description: >
@@ -11,4 +20,20 @@ exports:
         hull_diameter: 88.9
         hull_wall_thickness: 3.0
         hull_length: 520.0
+    application: cadquery
+  forward_bulkhead:
+    name: forward_bulkhead
+    description: >
+        Forward bulkhead of the AUV, made from flat aluminum stock.
+    output-files:
+        - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_forward_bulkhead.py
+    parameters:
+        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+        major_dia: 82.5
+        minor_dia: 72.0
+        step_heights: 6.0
+        pcb_hole_dia: 2.5  # Circuit board mounting hole diameter
     application: cadquery

@@ -1,4 +1,22 @@
 exports:
+  forward_bulkhead:
+    application: cadquery
+    description: 'Forward bulkhead of the AUV, made from flat aluminum stock.
+
+      '
+    name: forward_bulkhead
+    output-files:
+    - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
+    parameters:
+      hole_dia: 3.25
+      major_dia: 82.5
+      minor_dia: 72.0
+      pcb_hole_dia: 2.5
+      pcd_rad: 33.0
+      step_heights: 6.0
+    source-files:
+    - filepath: ./mech/components/auv_forward_bulkhead.py
+      md5: 7484ef76fb3f05226bba3c0d1d4ce28d
   hull:
     application: cadquery
     description: 'Main hull of the AUV, made from aluminum tubing.
@@ -13,4 +31,4 @@ exports:
       hull_wall_thickness: 3.0
     source-files:
     - filepath: ./mech/components/auv_hull.py
-      md5: 8730a4d2ea4e20b27e5d90a9bf52e9fa
+      md5: 5013ac8e24181355a733ed0c1ac2849b

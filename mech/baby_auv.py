@@ -29,11 +29,11 @@ def build_auv_assembly():
     auv_assy = cq.Assembly()
 
     # Add the body as the fixed, central component
-    auv_assy.add(hull(params), color=hull_color)
+    auv_assy.add(hull(), color=hull_color)
 
     # Add the forward bulkhead
     auv_assy.add(
-        forward_bulkhead(params),
+        forward_bulkhead(),
         color=bulkhead_color,
         loc=cq.Location((12.0, 0.0, 0.0), (0, 0, 1), 180),
         metadata={"explode_loc": cq.Location((60, 0, 0))},
