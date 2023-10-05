@@ -1,4 +1,20 @@
 exports:
+  extension_tube:
+    application: cadquery
+    description: 'Antenna extension tube of the AUV.
+
+      '
+    name: extension_tube
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
+      md5: 098f210cb7cf07aa9b8e5fa6e1f0efd0
+    parameters:
+      tube_id: 4.0
+      tube_length: 90.0
+      tube_od: 6.0
+    source-files:
+    - filepath: ./mech/components/auv_antenna_extension.py
+      md5: a66eda29a838a6a8a02409eb1acc66f8
   forward_bulkhead:
     application: cadquery
     description: 'Forward bulkhead of the AUV, made from flat aluminum stock.
@@ -7,7 +23,7 @@ exports:
     name: forward_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: ab91ffaf8f32d9850fd8b27eb8472348
+      md5: f069964adf09771463c48c4f2d47d63e
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -20,13 +36,13 @@ exports:
       md5: b178f6e751c91d84c82089739ff8dcaf
   front_clamp:
     application: cadquery
-    description: 'Front compression seal clamp the AUV.
+    description: 'Front compression seal clamp of the AUV.
 
       '
     name: front_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: 4fd76b800c8096d0c1842b778219c5eb
+      md5: cca64f4578fcc6d90f3ca683457a3838
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -35,7 +51,7 @@ exports:
       pcd_rad: 33.0
     source-files:
     - filepath: ./mech/components/auv_front_clamp.py
-      md5: 2dbe512675277b2dc96d5b79bccaf78e
+      md5: 9aba709c9612f585105dceb28a20678a
   hull:
     application: cadquery
     description: 'Main hull of the AUV, made from aluminum tubing.
@@ -44,7 +60,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: fc37e134e7658e779c1000a5a8aaca65
+      md5: 52bb38773132e682794155d1af28425b
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0

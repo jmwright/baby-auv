@@ -49,7 +49,7 @@ def build_auv_assembly():
 
     # Add the antenna extension tube
     auv_assy.add(
-        extension_tube(params),
+        extension_tube(),
         color=hardware_color,
         loc=cq.Location((0.0, 26.0, 0.0), (0, 0, 1), 180),
         metadata={"explode_loc": cq.Location((100, 0, 0))},

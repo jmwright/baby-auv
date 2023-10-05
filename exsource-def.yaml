@@ -40,7 +40,7 @@ exports:
   front_clamp:
     name: front_clamp
     description: >
-        Front compression seal clamp the AUV.
+        Front compression seal clamp of the AUV.
     output-files:
         - ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
     source-files:
@@ -51,4 +51,17 @@ exports:
         clamp_od: 88.0  # Outer diameter of the clamp
         clamp_id: 60.0  # Inner diameter of the clamp
         clamp_thickness: 4.0  # Thickness of the clamp
+    application: cadquery
+  extension_tube:
+    name: extension_tube
+    description: >
+        Antenna extension tube of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_antenna_extension.py
+    parameters:
+        tube_od: 6.0  # mm - Outer diameter of the extension tube
+        tube_id: 4.0  # mm - Inner diameter of the extension tube
+        tube_length: 90.0  # mm - Length of the extension tube
     application: cadquery
