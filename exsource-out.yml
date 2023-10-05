@@ -6,7 +6,8 @@ exports:
       '
     name: forward_bulkhead
     output-files:
-    - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
+    - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
+      md5: ab91ffaf8f32d9850fd8b27eb8472348
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -16,7 +17,25 @@ exports:
       step_heights: 6.0
     source-files:
     - filepath: ./mech/components/auv_forward_bulkhead.py
-      md5: 474f63e3f8adc053087ca576fba0a67b
+      md5: b178f6e751c91d84c82089739ff8dcaf
+  front_clamp:
+    application: cadquery
+    description: 'Front compression seal clamp the AUV.
+
+      '
+    name: front_clamp
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
+      md5: 4fd76b800c8096d0c1842b778219c5eb
+    parameters:
+      clamp_id: 60.0
+      clamp_od: 88.0
+      clamp_thickness: 4.0
+      hole_dia: 3.25
+      pcd_rad: 33.0
+    source-files:
+    - filepath: ./mech/components/auv_front_clamp.py
+      md5: 2dbe512675277b2dc96d5b79bccaf78e
   hull:
     application: cadquery
     description: 'Main hull of the AUV, made from aluminum tubing.
@@ -25,7 +44,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: 824ce595cc26270a8bb1d3a1d8d561cb
+      md5: fc37e134e7658e779c1000a5a8aaca65
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0

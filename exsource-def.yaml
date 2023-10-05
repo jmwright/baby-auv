@@ -37,3 +37,18 @@ exports:
         step_heights: 6.0
         pcb_hole_dia: 2.5  # Circuit board mounting hole diameter
     application: cadquery
+  front_clamp:
+    name: front_clamp
+    description: >
+        Front compression seal clamp the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_front_clamp.py
+    parameters:
+        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+        clamp_od: 88.0  # Outer diameter of the clamp
+        clamp_id: 60.0  # Inner diameter of the clamp
+        clamp_thickness: 4.0  # Thickness of the clamp
+    application: cadquery

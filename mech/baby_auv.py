@@ -41,7 +41,7 @@ def build_auv_assembly():
 
     # Add the front clamp
     auv_assy.add(
-        front_clamp(params),
+        front_clamp(),
         color=clamp_color,
         loc=cq.Location((-4.0, 0.0, 0.0), (1, 0, 0), 90),
         metadata={"explode_loc": cq.Location((-84, 0, 0))},
