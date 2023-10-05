@@ -65,7 +65,7 @@ def build_auv_assembly():
 
     # Add the rear clamp
     auv_assy.add(
-        rear_clamp(params).rotateAboutCenter((1, 0, 0), 30),
+        rear_clamp().rotateAboutCenter((1, 0, 0), 30),
         color=clamp_color,
         loc=cq.Location((params.hull_length - 3.0, 0.0, 0.0), (0, 0, 1), 0),
         metadata={"explode_loc": cq.Location((80, 0, 0))},

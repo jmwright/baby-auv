@@ -80,3 +80,16 @@ exports:
         pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
         hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
     application: cadquery
+  rear_clamp:
+    name: rear_clamp
+    description: >
+        Rear clamp of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_rear_clamp.py
+    parameters:
+        m3_tap_drill_size: 2.5  # mm - size to drill a hole to tap for an M3
+        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+    application: cadquery

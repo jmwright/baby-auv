@@ -7,7 +7,7 @@ exports:
     name: extension_tube
     output-files:
     - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-      md5: ad2fb3cdc502d85c27542d58231dc224
+      md5: 6d06d9f580eb5ee65848a65285bf8a8c
     parameters:
       tube_id: 4.0
       tube_length: 90.0
@@ -23,7 +23,7 @@ exports:
     name: forward_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: 0fc43755359af538bc4cbeda652d0c8e
+      md5: 45098ab5505d7376e7cbbb1b5a5a0054
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -42,7 +42,7 @@ exports:
     name: front_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: 2d3bb9f5b68c9f53268b7544e6e8a3dc
+      md5: 0d990931db017ca6c979a9ee8f130446
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -60,7 +60,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: bb808b7b3b7996ec3c48666beafc5127
+      md5: 0e999b1e586737e13bc3ff31943321e8
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
@@ -76,7 +76,7 @@ exports:
     name: rear_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
-      md5: 0fcf185601cc3e4fcc9b166bb91b5b0a
+      md5: 10539b4a861912156f6586e32c33ca10
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -86,3 +86,19 @@ exports:
     source-files:
     - filepath: ./mech/components/auv_rear_bulkhead.py
       md5: 726adf2d068f87c31ad6b27bbe0b93a5
+  rear_clamp:
+    application: cadquery
+    description: 'Rear clamp of the AUV.
+
+      '
+    name: rear_clamp
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
+      md5: 452e2b49cfdbb487c77706bfda5b96af
+    parameters:
+      hole_dia: 3.25
+      m3_tap_drill_size: 2.5
+      pcd_rad: 33.0
+    source-files:
+    - filepath: ./mech/components/auv_rear_clamp.py
+      md5: 130f0cc218f716850e854fb33104e2df

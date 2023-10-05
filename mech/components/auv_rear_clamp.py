@@ -2,8 +2,13 @@
 
 import cadquery as cq
 
+# Parameters
+m3_tap_drill_size = 2.5  # mm - size to drill a hole to tap for an M3
+pcd_rad = 33.0  # mm - Bulkhead hole pattern radius
+hole_dia = 3.25  # mm - Bulkhead clearance hole diameter
 
-def clamp(params):
+
+def clamp():
     """Generates the rear clamp of the AUV"""
 
     # Outer and inner radii of the first step
@@ -38,12 +43,12 @@ def clamp(params):
     rc = (
         rc.faces(">X")
         .workplane()
-        .polarArray(params.pcd_rad, 60, 360, 6)
-        .hole(params.hole_dia)
+        .polarArray(pcd_rad, 60, 360, 6)
+        .hole(hole_dia)
     )
 
     # Add the cage mounting hole pattern
-    mounting_hole_or = params.m3_tap_drill_size / 2.0
+    mounting_hole_or = m3_tap_drill_size / 2.0
     rc = (
         rc.workplane(
             centerOption="CenterOfBoundBox", offset=3.0 - mounting_hole_or / 2.0
@@ -64,69 +69,4 @@ def clamp(params):
     return rc
 
 
-def document(params, docs_images_path, manufacturing_files_path):
-    """Allows this model to be documented by itself or part of a larger system"""
-
-    import os
-
-    # Standard line colors for SVG export
-    svg_line_color = (10, 10, 10)
-    svg_hidden_color = (127, 127, 127)
-
-    # Standard options for SVG export
-    opts = {
-        "width": 800,
-        "height": None,
-        "marginLeft": 10,
-        "marginTop": 10,
-        "showAxes": False,
-        "projectionDir": (1.0, 0.0, 0.0),
-        "strokeWidth": 0.5,
-        "strokeColor": svg_line_color,
-        "hiddenColor": svg_hidden_color,
-        "showHidden": False,
-    }
-
-    # Generate the clamp so it can be exported
-    cl = clamp(params)
-
-    # Export the end view of the body tube in SVG
-    final_path = os.path.join(docs_images_path, "rear_clamp_right_side_view.svg")
-    cq.exporters.export(cl, final_path, opt=opts)
-
-    # Export the end view of the body tube in DXF
-    final_path = os.path.join(
-        manufacturing_files_path, "rear_clamp_right_side_view.dxf"
-    )
-    cq.exporters.export(cl, final_path)
-
-
-def main(args):
-    from helpers import (
-        append_sys_path,
-        get_docs_images_path,
-        get_manufacturing_files_path,
-    )
-
-    append_sys_path(".")
-    import parameters as params
-
-    # Generate documentation images and drawings
-    if args.document == True:
-        # Get the paths for the documentation output files
-        docs_images_path = get_docs_images_path(3)
-        manufacturing_files_path = get_manufacturing_files_path(3)
-
-        document(params, docs_images_path, manufacturing_files_path)
-    # Generate and display the model
-    else:
-        from cadquery.vis import show
-
-        cl = clamp(params)
-        show(cl)
-
-
-if __name__ == "__main__":
-    from helpers import handle_args
-
-    main(handle_args())
+show_object(clamp())
