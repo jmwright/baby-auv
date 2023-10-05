@@ -125,3 +125,30 @@ exports:
         barb_od: 4.9  # mm
         barb_length: 5.0  # mm
     application: cadquery
+  oring_006:
+    name: oring_006
+    description: >
+        -006 O-ring the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
+        - ./docs/manufacturing_files/generated/oring-006.stl
+    source-files:
+        - ./mech/components/auv_006_oring.py
+    parameters:
+        od: 6.35  # mm (1/4 in)
+        id: 2.9  # mm
+        cross_section: 1.78  # mm
+    application: cadquery
+  gasket:
+    name: gasket
+    description: >
+        Neoprene gasket for each end cap of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
+        - ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
+    source-files:
+        - ./mech/components/auv_neoprene_gasket.py
+    parameters:
+        id: 72  # mm
+        rect_cross_section: 6  # mm
+    application: cadquery

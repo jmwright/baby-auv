@@ -7,7 +7,7 @@ exports:
     name: cage
     output-files:
     - filepath: ./docs/manufacturing_files/generated/cage_right_side_view.dxf
-      md5: 3a5777d98ae077814f0ad1a6f47b482f
+      md5: 6bca2b1069fd37973c0312b13e16ff0f
     parameters:
       cage_id: 84.9
       cage_length: 82.0
@@ -25,7 +25,7 @@ exports:
     name: depth_nipple
     output-files:
     - filepath: ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
-      md5: 4db6981ec6a2abe13478ef09d7188000
+      md5: b66292b83a4553fd6fbe0348c4599935
     - filepath: ./docs/manufacturing_files/generated/depth_nipple.stl
       md5: 7b05adf030a1d2468f382f11b6312b4d
     parameters:
@@ -37,7 +37,7 @@ exports:
       tube_od: 4.0
     source-files:
     - filepath: ./mech/components/auv_depth_nipple.py
-      md5: ec9830fb29e36de45e4dac9776c9429a
+      md5: 897eb98dcdec0c4f4970672eac8af6a5
   extension_tube:
     application: cadquery
     description: 'Antenna extension tube of the AUV.
@@ -46,7 +46,7 @@ exports:
     name: extension_tube
     output-files:
     - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-      md5: 744699ee36077b7579e1960c71bfefa4
+      md5: 17dc9d08d2deff8acc56294786b874ff
     parameters:
       tube_id: 4.0
       tube_length: 90.0
@@ -62,7 +62,7 @@ exports:
     name: forward_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: ad34d43bf15a04a16306ee1980877340
+      md5: 52364c5aba22206995ae16435cc83b37
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -81,7 +81,7 @@ exports:
     name: front_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: fb063b87bc80be099911f5131cc3cc8a
+      md5: b10ec989de10caf245cdb6e8c7d8f4f4
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -91,6 +91,23 @@ exports:
     source-files:
     - filepath: ./mech/components/auv_front_clamp.py
       md5: 9aba709c9612f585105dceb28a20678a
+  gasket:
+    application: cadquery
+    description: 'Neoprene gasket for each end cap of the AUV.
+
+      '
+    name: gasket
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
+      md5: b4156caa5369c80b4224a076209a44d0
+    - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
+      md5: f86c4807cb24681d3caea968917304ca
+    parameters:
+      id: 72
+      rect_cross_section: 6
+    source-files:
+    - filepath: ./mech/components/auv_neoprene_gasket.py
+      md5: 604bfe146d36a22f6ff643da06644e96
   hull:
     application: cadquery
     description: 'Main hull of the AUV, made from aluminum tubing.
@@ -99,7 +116,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: 4bc1e5046734a9dfb910d2ba5e717827
+      md5: 6880d1353a7317202c56b5521176869a
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
@@ -107,6 +124,24 @@ exports:
     source-files:
     - filepath: ./mech/components/auv_hull.py
       md5: 5013ac8e24181355a733ed0c1ac2849b
+  oring_006:
+    application: cadquery
+    description: '-006 O-ring the AUV.
+
+      '
+    name: oring_006
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
+      md5: b0d228d9e4ab3317a75efa48c1b9c149
+    - filepath: ./docs/manufacturing_files/generated/oring-006.stl
+      md5: b7e074d1d82a4df76ef2c72b861ddeaf
+    parameters:
+      cross_section: 1.78
+      id: 2.9
+      od: 6.35
+    source-files:
+    - filepath: ./mech/components/auv_006_oring.py
+      md5: 926a31a86fb5af0145d4ade480359df0
   rear_bulkhead:
     application: cadquery
     description: 'Rear bulkhead of the AUV.
@@ -115,7 +150,7 @@ exports:
     name: rear_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
-      md5: aea8bbf88788d71979ff0f6002962914
+      md5: a4c6d9585c1e50c2c51a9dcb3eb06395
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -133,7 +168,7 @@ exports:
     name: rear_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
-      md5: 5d4150ae5076761fb5218a9e5e5dad86
+      md5: 7d8c3521acffa47073e973e0f4ff2bdc
     parameters:
       hole_dia: 3.25
       m3_tap_drill_size: 2.5

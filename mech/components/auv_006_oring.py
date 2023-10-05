@@ -23,34 +23,4 @@ def oring():
     return ring
 
 
-def document(params, docs_images_path, manufacturing_files_path):
-    """Dummy document code"""
-    pass
-
-
-def main(args):
-    from helpers import (
-        append_sys_path,
-        get_docs_images_path,
-        get_manufacturing_files_path,
-    )
-
-    # Get the paths for the documentation output files
-    docs_images_path = get_docs_images_path(3)
-    manufacturing_files_path = get_manufacturing_files_path(3)
-
-    # Generate documentation images and drawings
-    if args.document == True:
-        document(None, docs_images_path, manufacturing_files_path)
-    # Generate the model and display it
-    else:
-        from cadquery.vis import show
-
-        ring = oring()
-        show(ring)
-
-
-if __name__ == "__main__":
-    from helpers import handle_args
-
-    main(handle_args())
+show_object(oring())
