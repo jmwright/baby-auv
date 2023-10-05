@@ -73,7 +73,7 @@ def build_auv_assembly():
 
     # Add the cage
     auv_assy.add(
-        cage(params),
+        cage(),
         color=cage_color,
         loc=cq.Location((params.hull_length + 2.0, 0.0, 0.0), (0, 0, 1), 0),
         metadata={"explode_loc": cq.Location((100, 0, 0))},
@@ -81,7 +81,7 @@ def build_auv_assembly():
 
     # Add the depth gauge nipple
     auv_assy.add(
-        nipple(params),
+        nipple(),
         color=hardware_color,
         loc=cq.Location((params.hull_length - 22.0, 9.6, -24.4), (0, 0, 1), 0),
         metadata={"explode_loc": cq.Location((100, 0, 0))},

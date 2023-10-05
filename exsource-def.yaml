@@ -93,3 +93,35 @@ exports:
         pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
         hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
     application: cadquery
+  cage:
+    name: cage
+    description: >
+        Sensor cage of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/cage_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_cage.py
+    parameters:
+        cage_od: 88.9  # mm
+        cage_id: 84.9  # mm
+        cage_length: 82.0  # mm
+        slot_dia: 25.0  # mm
+        mounting_hole_od: 3.4  # mm
+    application: cadquery
+  depth_nipple:
+    name: depth_nipple
+    description: >
+        Depth nipple of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
+        - ./docs/manufacturing_files/generated/depth_nipple.stl
+    source-files:
+        - ./mech/components/auv_depth_nipple.py
+    parameters:
+        straight_length: 25.0  # mm
+        barb_half_length: 5.0  # mm
+        tube_od: 4.0  # mm
+        tube_id: 2.0  # mm
+        barb_od: 4.9  # mm
+        barb_length: 5.0  # mm
+    application: cadquery
