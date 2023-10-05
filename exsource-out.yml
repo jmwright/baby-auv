@@ -7,14 +7,14 @@ exports:
     name: extension_tube
     output-files:
     - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-      md5: 098f210cb7cf07aa9b8e5fa6e1f0efd0
+      md5: ad2fb3cdc502d85c27542d58231dc224
     parameters:
       tube_id: 4.0
       tube_length: 90.0
       tube_od: 6.0
     source-files:
     - filepath: ./mech/components/auv_antenna_extension.py
-      md5: a66eda29a838a6a8a02409eb1acc66f8
+      md5: 82ce1e00db085f184499880cda80b529
   forward_bulkhead:
     application: cadquery
     description: 'Forward bulkhead of the AUV, made from flat aluminum stock.
@@ -23,7 +23,7 @@ exports:
     name: forward_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: f069964adf09771463c48c4f2d47d63e
+      md5: 0fc43755359af538bc4cbeda652d0c8e
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -42,7 +42,7 @@ exports:
     name: front_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: cca64f4578fcc6d90f3ca683457a3838
+      md5: 2d3bb9f5b68c9f53268b7544e6e8a3dc
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -60,7 +60,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: 52bb38773132e682794155d1af28425b
+      md5: bb808b7b3b7996ec3c48666beafc5127
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
@@ -68,3 +68,21 @@ exports:
     source-files:
     - filepath: ./mech/components/auv_hull.py
       md5: 5013ac8e24181355a733ed0c1ac2849b
+  rear_bulkhead:
+    application: cadquery
+    description: 'Rear bulkhead of the AUV.
+
+      '
+    name: rear_bulkhead
+    output-files:
+    - filepath: ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
+      md5: 0fcf185601cc3e4fcc9b166bb91b5b0a
+    parameters:
+      hole_dia: 3.25
+      major_dia: 82.5
+      minor_dia: 72.0
+      pcd_rad: 33.0
+      step_heights: 6.0
+    source-files:
+    - filepath: ./mech/components/auv_rear_bulkhead.py
+      md5: 726adf2d068f87c31ad6b27bbe0b93a5

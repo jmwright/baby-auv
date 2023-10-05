@@ -65,3 +65,18 @@ exports:
         tube_id: 4.0  # mm - Inner diameter of the extension tube
         tube_length: 90.0  # mm - Length of the extension tube
     application: cadquery
+  rear_bulkhead:
+    name: rear_bulkhead
+    description: >
+        Rear bulkhead of the AUV.
+    output-files:
+        - ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
+    source-files:
+        - ./mech/components/auv_rear_bulkhead.py
+    parameters:
+        major_dia: 82.5
+        minor_dia: 72.0
+        step_heights: 6.0
+        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+    application: cadquery

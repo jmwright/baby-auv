@@ -57,7 +57,7 @@ def build_auv_assembly():
 
     # Add the rear bulkhead
     auv_assy.add(
-        rear_bulkhead(params),
+        rear_bulkhead(),
         color=bulkhead_color,
         loc=cq.Location((params.hull_length - 12.0, 0.0, 0.0), (0, 0, 1), 0),
         metadata={"explode_loc": cq.Location((60, 0, 0))},
