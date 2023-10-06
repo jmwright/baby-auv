@@ -20,4 +20,5 @@ def gasket():
     return gskt
 
 
-show_object(gasket())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(gasket())

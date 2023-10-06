@@ -44,4 +44,5 @@ def bulkhead():
     return bh
 
 
-show_object(bulkhead())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(bulkhead())

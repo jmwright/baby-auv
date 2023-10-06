@@ -6,6 +6,8 @@ def _process_cadquery(export):
     """
     Processes a CadQuery export for display.
     """
+    import sys
+    import path
     import traceback
     from cadquery import cqgi
     from cadquery.vis import show
@@ -18,6 +20,11 @@ def _process_cadquery(export):
     for source in sources:
         # Read the contents of the source file
         with open(source.filepath) as f: script_code = f.read()
+
+        # In order to load modules in the project directory, we need to add the path to the Python path
+        directory = path.Path(source.filepath).abspath()
+        base_path = directory.parent
+        sys.path.append(base_path)
 
         # Execute the CadQuery script
         try:

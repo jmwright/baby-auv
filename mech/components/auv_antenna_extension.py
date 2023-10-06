@@ -21,4 +21,5 @@ def extension_tube():
     return tube
 
 
-show_object(extension_tube())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(extension_tube())

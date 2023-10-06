@@ -1,13 +1,28 @@
 exports:
-#   assembly:
-#     name: assembly
-#     description: >
-#         Entire AUV assembly
-#     output-files:
-#         - ./docs/images/generated/baby_auv_assembly.gltf
-#     source-files:
-#         - ./mech/baby_auv.py
-#     application: cadquery
+  assembly:
+    name: assembly
+    description: >
+        Entire AUV assembly
+    output-files:
+        - ./docs/images/generated/baby_auv_assembly.gltf
+    source-files:
+        - ./mech/baby_auv.py
+    parameters:
+      hull_length: 520.0  # mm
+      exploded: False
+    application: cadquery
+  assembly_exploded:
+    name: assembly_exploded
+    description: >
+        Entire AUV assembly in the exploded view
+    output-files:
+        - ./docs/images/generated/baby_auv_exploded_assembly.gltf
+    source-files:
+        - ./mech/baby_auv.py
+    parameters:
+      hull_length: 520.0  # mm
+      exploded: True
+    application: cadquery
   hull:
     name: hull
     description: >

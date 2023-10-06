@@ -34,4 +34,5 @@ def nipple():
     return np
 
 
-show_object(nipple())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(nipple())

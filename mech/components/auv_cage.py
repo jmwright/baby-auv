@@ -76,4 +76,5 @@ def cage():
     return cg
 
 
-show_object(cage())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(cage())

@@ -28,5 +28,5 @@ def hull():
 
     return hl
 
-
-show_object(hull())
+if "show_object" in globals() or __name__ == "__cqgi__":
+    show_object(hull())
