@@ -85,7 +85,7 @@ def build_auv_assembly():
     auv_assy.add(
         nipple(),
         color=hardware_color,
-        loc=cq.Location((hull_length - 22.0, 9.6, -24.4), (0, 0, 1), 0),
+        loc=cq.Location((hull_length + 10.0, 9.6, -24.4), (0, 0, 1), 180),
         metadata={"explode_loc": cq.Location((100, 0, 0))},
     )
 
