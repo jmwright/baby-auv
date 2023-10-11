@@ -8,7 +8,8 @@ exports:
     source-files:
         - ./mech/baby_auv.py
     parameters:
-      hull_length: 520.0  # mm
+      use_conductivity_sensor: True  # Needs to be global
+      hull_length: 520.0  # mm - Needs to be global
       exploded: False
     application: cadquery
   assembly_exploded:
@@ -20,6 +21,7 @@ exports:
     source-files:
         - ./mech/baby_auv.py
     parameters:
+      use_conductivity_sensor: True  # Needs to be global
       hull_length: 520.0  # mm
       exploded: True
     application: cadquery
@@ -104,6 +106,7 @@ exports:
     source-files:
         - ./mech/components/auv_rear_clamp.py
     parameters:
+        use_conductivity_sensor: True  # Needs to be global
         m3_tap_drill_size: 2.5  # mm - size to drill a hole to tap for an M3
         pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
         hole_dia: 3.25  # mm - Bulkhead clearance hole diameter

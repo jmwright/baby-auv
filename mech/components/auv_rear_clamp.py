@@ -3,6 +3,7 @@
 import cadquery as cq
 
 # Parameters
+use_conductivity_sensor = True
 m3_tap_drill_size = 2.5  # mm - size to drill a hole to tap for an M3
 pcd_rad = 33.0  # mm - Bulkhead hole pattern radius
 hole_dia = 3.25  # mm - Bulkhead clearance hole diameter
@@ -17,11 +18,11 @@ def clamp():
 
     # Outer and inner radii of the second step
     step_2_or = 88.0 / 2.0
-    step_2_ir = 59.5 / 2.0
+    step_2_ir = 60.0 / 2.0
 
     # Outer and inner radii of the third step
     step_3_or = 84.0 / 2.0
-    step_3_ir = 59.5 / 2.0
+    step_3_ir = 60.0 / 2.0
 
     # Outer and inner radii of the forth step
     step_4_or = 84.0 / 2.0
@@ -65,6 +66,10 @@ def clamp():
         .circle(mounting_hole_or)
         .cutThruAll()
     )
+
+    # Add a notch for the conductivity sensor if it is being used
+    if use_conductivity_sensor:
+        rc = rc.faces("<X").workplane(centerOption="CenterOfBoundBox", invert=True).move(-20.8, -12.0).circle(15.0 / 2.0).cutThruAll()
 
     return rc
 

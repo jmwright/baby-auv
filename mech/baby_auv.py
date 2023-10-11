@@ -13,6 +13,7 @@ from components.auv_neoprene_gasket import gasket
 from cq_annotate import explode_assembly
 
 
+use_conductivity_sensor = True
 hull_length = 520.0  # mm
 exploded = False
 
