@@ -7,13 +7,14 @@ exports:
     name: assembly
     output-files:
     - filepath: ./docs/images/generated/baby_auv_assembly.gltf
-      md5: 3ef905bad0f7606a520d038ca2275b89
+      md5: 255f54313b6bd1b39a8c8dc0c54006f0
     parameters:
       exploded: false
       hull_length: 520.0
+      use_conductivity_sensor: true
     source-files:
     - filepath: ./mech/baby_auv.py
-      md5: f6eb6013b17d0505d96df11473fca26d
+      md5: 371ac13161e2cc8602eef39a8f644c8c
   assembly_exploded:
     application: cadquery
     description: 'Entire AUV assembly in the exploded view
@@ -22,13 +23,14 @@ exports:
     name: assembly_exploded
     output-files:
     - filepath: ./docs/images/generated/baby_auv_exploded_assembly.gltf
-      md5: b3ad52b80c02bacf85a6311d3e10074f
+      md5: 2da31509516cc8e0d63937c8deabdc9c
     parameters:
       exploded: true
       hull_length: 520.0
+      use_conductivity_sensor: true
     source-files:
     - filepath: ./mech/baby_auv.py
-      md5: f6eb6013b17d0505d96df11473fca26d
+      md5: 371ac13161e2cc8602eef39a8f644c8c
   cage:
     application: cadquery
     description: 'Sensor cage of the AUV.
@@ -37,7 +39,7 @@ exports:
     name: cage
     output-files:
     - filepath: ./docs/manufacturing_files/generated/cage_right_side_view.dxf
-      md5: 7400c865e2cd9d6b56844657b6f9a77e
+      md5: 7a3281882bc6ae9bc7dd23e80ac97de6
     parameters:
       cage_id: 84.9
       cage_length: 82.0
@@ -55,7 +57,7 @@ exports:
     name: depth_nipple
     output-files:
     - filepath: ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
-      md5: 9de6a8f474ec79feffb7c6367d6027b9
+      md5: 63ecabca6e70c73890be6110d655bda6
     - filepath: ./docs/manufacturing_files/generated/depth_nipple.stl
       md5: 7b05adf030a1d2468f382f11b6312b4d
     parameters:
@@ -76,7 +78,7 @@ exports:
     name: extension_tube
     output-files:
     - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-      md5: 8db7e4be981bc46a2345a5a19bceba0b
+      md5: 09bf9c0a76c49acd4ef7671dbcc43426
     parameters:
       tube_id: 4.0
       tube_length: 90.0
@@ -92,7 +94,7 @@ exports:
     name: forward_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: a1ef2cb5906af4855dc8a1389b4745e2
+      md5: bd00a522995347ba55af21e2ddeed26b
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -111,7 +113,7 @@ exports:
     name: front_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: e99d7adeb28a1ec8b709de63d3a406e4
+      md5: 25b75ca689b96f524807bb5a55dce30f
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -129,7 +131,7 @@ exports:
     name: gasket
     output-files:
     - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
-      md5: c42856c133eb5df975544ef3a7d650b1
+      md5: fff7f8948ae3b81ef1826236e39be19a
     - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
       md5: f86c4807cb24681d3caea968917304ca
     parameters:
@@ -146,7 +148,7 @@ exports:
     name: hull
     output-files:
     - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: bcbf5a3e2656d880f739316cf285a4b2
+      md5: 71d27403d4ad4e3ac425ed648ed6407d
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
@@ -162,7 +164,7 @@ exports:
     name: oring_006
     output-files:
     - filepath: ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
-      md5: 6580953681aedac7243a1864a74b53ad
+      md5: 81d154ce6b1300df735ed82d977ebe5e
     - filepath: ./docs/manufacturing_files/generated/oring-006.stl
       md5: b7e074d1d82a4df76ef2c72b861ddeaf
     parameters:
@@ -180,7 +182,7 @@ exports:
     name: rear_bulkhead
     output-files:
     - filepath: ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
-      md5: b4c4352a8258e5db762b9db154eb8476
+      md5: 4f1ce8fdcba879ad20f9e9e05b101deb
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -198,11 +200,12 @@ exports:
     name: rear_clamp
     output-files:
     - filepath: ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
-      md5: b10eb8ac5f180c512c5b21a211040091
+      md5: 690755b468d603164026d5f2e4a0a6da
     parameters:
       hole_dia: 3.25
       m3_tap_drill_size: 2.5
       pcd_rad: 33.0
+      use_conductivity_sensor: true
     source-files:
     - filepath: ./mech/components/auv_rear_clamp.py
-      md5: 2c8e367f38960321e299aa2db26d9d45
+      md5: 7f64be0fc5f4e6fcfcc6722b3d000582

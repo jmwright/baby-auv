@@ -1,172 +1,172 @@
 exports:
-  assembly:
-    name: assembly
-    description: >
-        Entire AUV assembly
-    output-files:
-        - ./docs/images/generated/baby_auv_assembly.gltf
-    source-files:
-        - ./mech/baby_auv.py
-    parameters:
-      use_conductivity_sensor: True  # Needs to be global
-      hull_length: 520.0  # mm - Needs to be global
-      exploded: False
-    application: cadquery
-  assembly_exploded:
-    name: assembly_exploded
-    description: >
-        Entire AUV assembly in the exploded view
-    output-files:
-        - ./docs/images/generated/baby_auv_exploded_assembly.gltf
-    source-files:
-        - ./mech/baby_auv.py
-    parameters:
-      use_conductivity_sensor: True  # Needs to be global
-      hull_length: 520.0  # mm
-      exploded: True
-    application: cadquery
-  hull:
-    name: hull
-    description: >
-        Main hull of the AUV, made from aluminum tubing.
-    output-files:
-        - ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_hull.py
-    parameters:
-        hull_diameter: 88.9
-        hull_wall_thickness: 3.0
-        hull_length: 520.0
-    application: cadquery
-  forward_bulkhead:
-    name: forward_bulkhead
-    description: >
-        Forward bulkhead of the AUV, made from flat aluminum stock.
-    output-files:
-        - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_forward_bulkhead.py
-    parameters:
-        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
-        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
-        major_dia: 82.5
-        minor_dia: 72.0
-        step_heights: 6.0
-        pcb_hole_dia: 2.5  # Circuit board mounting hole diameter
-    application: cadquery
-  front_clamp:
-    name: front_clamp
-    description: >
-        Front compression seal clamp of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_front_clamp.py
-    parameters:
-        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
-        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
-        clamp_od: 88.0  # Outer diameter of the clamp
-        clamp_id: 60.0  # Inner diameter of the clamp
-        clamp_thickness: 4.0  # Thickness of the clamp
-    application: cadquery
-  extension_tube:
-    name: extension_tube
-    description: >
-        Antenna extension tube of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_antenna_extension.py
-    parameters:
-        tube_od: 6.0  # mm - Outer diameter of the extension tube
-        tube_id: 4.0  # mm - Inner diameter of the extension tube
-        tube_length: 90.0  # mm - Length of the extension tube
-    application: cadquery
-  rear_bulkhead:
-    name: rear_bulkhead
-    description: >
-        Rear bulkhead of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_rear_bulkhead.py
-    parameters:
-        major_dia: 82.5
-        minor_dia: 72.0
-        step_heights: 6.0
-        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
-        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
-    application: cadquery
-  rear_clamp:
-    name: rear_clamp
-    description: >
-        Rear clamp of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_rear_clamp.py
-    parameters:
-        use_conductivity_sensor: True  # Needs to be global
-        m3_tap_drill_size: 2.5  # mm - size to drill a hole to tap for an M3
-        pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
-        hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
-    application: cadquery
-  cage:
-    name: cage
-    description: >
-        Sensor cage of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/cage_right_side_view.dxf
-    source-files:
-        - ./mech/components/auv_cage.py
-    parameters:
-        cage_od: 88.9  # mm
-        cage_id: 84.9  # mm
-        cage_length: 82.0  # mm
-        slot_dia: 25.0  # mm
-        mounting_hole_od: 3.4  # mm
-    application: cadquery
-  depth_nipple:
-    name: depth_nipple
-    description: >
-        Depth nipple of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
-        - ./docs/manufacturing_files/generated/depth_nipple.stl
-    source-files:
-        - ./mech/components/auv_depth_nipple.py
-    parameters:
-        straight_length: 25.0  # mm
-        barb_half_length: 5.0  # mm
-        tube_od: 4.0  # mm
-        tube_id: 2.0  # mm
-        barb_od: 4.9  # mm
-        barb_length: 5.0  # mm
-    application: cadquery
-  oring_006:
-    name: oring_006
-    description: >
-        -006 O-ring the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
-        - ./docs/manufacturing_files/generated/oring-006.stl
-    source-files:
-        - ./mech/components/auv_006_oring.py
-    parameters:
-        od: 6.35  # mm (1/4 in)
-        id: 2.9  # mm
-        cross_section: 1.78  # mm
-    application: cadquery
-  gasket:
-    name: gasket
-    description: >
-        Neoprene gasket for each end cap of the AUV.
-    output-files:
-        - ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
-        - ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
-    source-files:
-        - ./mech/components/auv_neoprene_gasket.py
-    parameters:
-        id: 72  # mm
-        rect_cross_section: 6  # mm
-    application: cadquery
+    assembly:
+        name: assembly
+        description: >
+            Entire AUV assembly
+        output-files:
+            - ./docs/images/generated/baby_auv_assembly.gltf
+        source-files:
+            - ./mech/baby_auv.py
+        parameters:
+            use_conductivity_sensor: True  # Needs to be global
+            hull_length: 520.0  # mm - Needs to be global
+            exploded: False
+        application: cadquery
+    assembly_exploded:
+        name: assembly_exploded
+        description: >
+            Entire AUV assembly in the exploded view
+        output-files:
+            - ./docs/images/generated/baby_auv_exploded_assembly.gltf
+        source-files:
+            - ./mech/baby_auv.py
+        parameters:
+            use_conductivity_sensor: True  # Needs to be global
+            hull_length: 520.0  # mm
+            exploded: True
+        application: cadquery
+    hull:
+        name: hull
+        description: >
+            Main hull of the AUV, made from aluminum tubing.
+        output-files:
+            - ./docs/manufacturing_files/generated/hull_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_hull.py
+        parameters:
+            hull_diameter: 88.9
+            hull_wall_thickness: 3.0
+            hull_length: 520.0
+        application: cadquery
+    forward_bulkhead:
+        name: forward_bulkhead
+        description: >
+            Forward bulkhead of the AUV, made from flat aluminum stock.
+        output-files:
+            - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_forward_bulkhead.py
+        parameters:
+            pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+            hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+            major_dia: 82.5
+            minor_dia: 72.0
+            step_heights: 6.0
+            pcb_hole_dia: 2.5  # Circuit board mounting hole diameter
+        application: cadquery
+    front_clamp:
+        name: front_clamp
+        description: >
+            Front compression seal clamp of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_front_clamp.py
+        parameters:
+            pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+            hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+            clamp_od: 88.0  # Outer diameter of the clamp
+            clamp_id: 60.0  # Inner diameter of the clamp
+            clamp_thickness: 4.0  # Thickness of the clamp
+        application: cadquery
+    extension_tube:
+        name: extension_tube
+        description: >
+            Antenna extension tube of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_antenna_extension.py
+        parameters:
+            tube_od: 6.0  # mm - Outer diameter of the extension tube
+            tube_id: 4.0  # mm - Inner diameter of the extension tube
+            tube_length: 90.0  # mm - Length of the extension tube
+        application: cadquery
+    rear_bulkhead:
+        name: rear_bulkhead
+        description: >
+            Rear bulkhead of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_rear_bulkhead.py
+        parameters:
+            major_dia: 82.5
+            minor_dia: 72.0
+            step_heights: 6.0
+            pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+            hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+        application: cadquery
+    rear_clamp:
+        name: rear_clamp
+        description: >
+            Rear clamp of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_rear_clamp.py
+        parameters:
+            use_conductivity_sensor: True  # Needs to be global
+            m3_tap_drill_size: 2.5  # mm - size to drill a hole to tap for an M3
+            pcd_rad: 33.0  # mm - Bulkhead hole pattern radius
+            hole_dia: 3.25  # mm - Bulkhead clearance hole diameter
+        application: cadquery
+    cage:
+        name: cage
+        description: >
+            Sensor cage of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/cage_right_side_view.dxf
+        source-files:
+            - ./mech/components/auv_cage.py
+        parameters:
+            cage_od: 88.9  # mm
+            cage_id: 84.9  # mm
+            cage_length: 82.0  # mm
+            slot_dia: 25.0  # mm
+            mounting_hole_od: 3.4  # mm
+        application: cadquery
+    depth_nipple:
+        name: depth_nipple
+        description: >
+            Depth nipple of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
+            - ./docs/manufacturing_files/generated/depth_nipple.stl
+        source-files:
+            - ./mech/components/auv_depth_nipple.py
+        parameters:
+            straight_length: 25.0  # mm
+            barb_half_length: 5.0  # mm
+            tube_od: 4.0  # mm
+            tube_id: 2.0  # mm
+            barb_od: 4.9  # mm
+            barb_length: 5.0  # mm
+        application: cadquery
+    oring_006:
+        name: oring_006
+        description: >
+            -006 O-ring the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
+            - ./docs/manufacturing_files/generated/oring-006.stl
+        source-files:
+            - ./mech/components/auv_006_oring.py
+        parameters:
+            od: 6.35  # mm (1/4 in)
+            id: 2.9  # mm
+            cross_section: 1.78  # mm
+        application: cadquery
+    gasket:
+        name: gasket
+        description: >
+            Neoprene gasket for each end cap of the AUV.
+        output-files:
+            - ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
+            - ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
+        source-files:
+            - ./mech/components/auv_neoprene_gasket.py
+        parameters:
+            id: 72  # mm
+            rect_cross_section: 6  # mm
+        application: cadquery
