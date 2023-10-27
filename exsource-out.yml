@@ -6,8 +6,7 @@ exports:
       '
     name: assembly
     output-files:
-    - filepath: ./docs/images/generated/baby_auv_assembly.gltf
-      md5: 255f54313b6bd1b39a8c8dc0c54006f0
+    - ./docs/images/generated/baby_auv_assembly.gltf
     parameters:
       exploded: false
       hull_length: 520.0
@@ -22,8 +21,7 @@ exports:
       '
     name: assembly_exploded
     output-files:
-    - filepath: ./docs/images/generated/baby_auv_exploded_assembly.gltf
-      md5: 2da31509516cc8e0d63937c8deabdc9c
+    - ./docs/images/generated/baby_auv_exploded_assembly.gltf
     parameters:
       exploded: true
       hull_length: 520.0
@@ -38,8 +36,7 @@ exports:
       '
     name: cage
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/cage_right_side_view.dxf
-      md5: 7a3281882bc6ae9bc7dd23e80ac97de6
+    - ./docs/manufacturing_files/generated/cage_right_side_view.dxf
     parameters:
       cage_id: 84.9
       cage_length: 82.0
@@ -56,10 +53,8 @@ exports:
       '
     name: depth_nipple
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
-      md5: 63ecabca6e70c73890be6110d655bda6
-    - filepath: ./docs/manufacturing_files/generated/depth_nipple.stl
-      md5: 7b05adf030a1d2468f382f11b6312b4d
+    - ./docs/manufacturing_files/generated/depth_nipple_right_side_view.dxf
+    - ./docs/manufacturing_files/generated/depth_nipple.stl
     parameters:
       barb_half_length: 5.0
       barb_length: 5.0
@@ -77,8 +72,7 @@ exports:
       '
     name: extension_tube
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
-      md5: 09bf9c0a76c49acd4ef7671dbcc43426
+    - ./docs/manufacturing_files/generated/antenna_extension_tube_right_side_view.dxf
     parameters:
       tube_id: 4.0
       tube_length: 90.0
@@ -93,8 +87,7 @@ exports:
       '
     name: forward_bulkhead
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
-      md5: bd00a522995347ba55af21e2ddeed26b
+    - ./docs/manufacturing_files/generated/forward_bulkhead_right_side_view.dxf
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -112,8 +105,7 @@ exports:
       '
     name: front_clamp
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
-      md5: 25b75ca689b96f524807bb5a55dce30f
+    - ./docs/manufacturing_files/generated/front_clamp_right_side_view.dxf
     parameters:
       clamp_id: 60.0
       clamp_od: 88.0
@@ -130,10 +122,8 @@ exports:
       '
     name: gasket
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
-      md5: fff7f8948ae3b81ef1826236e39be19a
-    - filepath: ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
-      md5: f86c4807cb24681d3caea968917304ca
+    - ./docs/manufacturing_files/generated/neoprene_expansion_gasket_right_side_view.dxf
+    - ./docs/manufacturing_files/generated/neoprene_expansion_gasket.stl
     parameters:
       id: 72
       rect_cross_section: 6
@@ -147,8 +137,7 @@ exports:
       '
     name: hull
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/hull_right_side_view.dxf
-      md5: 71d27403d4ad4e3ac425ed648ed6407d
+    - ./docs/manufacturing_files/generated/hull_right_side_view.dxf
     parameters:
       hull_diameter: 88.9
       hull_length: 520.0
@@ -163,10 +152,8 @@ exports:
       '
     name: oring_006
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
-      md5: 81d154ce6b1300df735ed82d977ebe5e
-    - filepath: ./docs/manufacturing_files/generated/oring-006.stl
-      md5: b7e074d1d82a4df76ef2c72b861ddeaf
+    - ./docs/manufacturing_files/generated/oring_006_right_side_view.dxf
+    - ./docs/manufacturing_files/generated/oring-006.stl
     parameters:
       cross_section: 1.78
       id: 2.9
@@ -181,8 +168,7 @@ exports:
       '
     name: rear_bulkhead
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
-      md5: 4f1ce8fdcba879ad20f9e9e05b101deb
+    - ./docs/manufacturing_files/generated/rear_bulkhead_right_side_view.dxf
     parameters:
       hole_dia: 3.25
       major_dia: 82.5
@@ -199,8 +185,7 @@ exports:
       '
     name: rear_clamp
     output-files:
-    - filepath: ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
-      md5: 690755b468d603164026d5f2e4a0a6da
+    - ./docs/manufacturing_files/generated/rear_clamp_right_side_view.dxf
     parameters:
       hole_dia: 3.25
       m3_tap_drill_size: 2.5

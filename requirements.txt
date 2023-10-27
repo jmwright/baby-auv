@@ -1,0 +1,3 @@
+git+https://gitlab.com/jmwright/exsource-tools.git
+git+https://github.com/CadQuery/cq-cli.git
+git+https://github.com/jmwright/cq-annotate.git
