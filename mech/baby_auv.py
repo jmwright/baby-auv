@@ -10,7 +10,7 @@ from components.auv_cage import cage
 from components.auv_depth_nipple import nipple
 from components.auv_006_oring import oring
 from components.auv_neoprene_gasket import gasket
-from cq_annotate import explode_assembly
+from cq_annotate.views import explode_assembly
 
 
 use_conductivity_sensor = True
